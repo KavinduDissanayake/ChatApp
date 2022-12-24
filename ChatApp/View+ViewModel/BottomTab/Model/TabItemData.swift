@@ -9,6 +9,5 @@ import Foundation
 
 struct TabItemData {
     let image: String
-    let selectedImage: String
     let title: String
 }

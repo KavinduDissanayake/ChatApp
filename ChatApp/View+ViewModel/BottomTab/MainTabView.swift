@@ -22,7 +22,9 @@ struct MainTabView: View {
     func getTabView(type: TabType) -> some View {
         switch type {
         case .home:
-            HomePage()
+            
+            ChatList()
+            //HomePage()
         case .myFile:
             HomePage()
         case .profile:

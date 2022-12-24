@@ -13,20 +13,29 @@ struct TabItemView: View {
     
     var body: some View {
         VStack {
-            Image(isSelected ? data.selectedImage : data.image)
+            Image(data.image)
                 .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 32, height: 32)
-                .animation(.default)
+//                .aspectRatio(contentMode: .fit)
+                .scaledToFit()
+                .frame(width: 28, height: 28)
+              .animation(.default)
+                .padding()
+                   .background( isSelected ? themeColor :  nil )
+                   .cornerRadius(8)
             
-            Spacer().frame(height: 4)
-            
-            Text(data.title)
-                .foregroundColor(isSelected ? .black : .gray)
-                .font(.system(size: 14))
         }
     }
 }
+
+
+struct TabItemView_Previews: PreviewProvider {
+    static var previews: some View {
+        TabItemView(data: TabItemData(image: "ic_home",title: ""), isSelected: false)
+            .previewLayout(.sizeThatFits)
+    }
+}
+
+
 
 
 struct TabBottomView: View {
@@ -85,18 +94,18 @@ struct CustomTabView<Content: View>: View {
 
 
 enum TabType: Int, CaseIterable {
-    case home = 0
+    case home = 1
     case myFile
     case profile
     
     var tabItem: TabItemData {
         switch self {
         case .home:
-            return TabItemData(image: "ic_home", selectedImage: "ic_home_selected", title: "Home")
+            return TabItemData(image: "ic_home",title: "Home")
         case .myFile:
-            return TabItemData(image: "ic_myfile", selectedImage: "ic_myfile_selected", title: "My File")
+            return TabItemData(image: "ic_chat", title: "Chat")
         case .profile:
-            return TabItemData(image: "ic_profile", selectedImage: "ic_profile_selected", title: "Me")
+            return TabItemData(image: "ic_user",title: "Profile")
         }
     }
 }
