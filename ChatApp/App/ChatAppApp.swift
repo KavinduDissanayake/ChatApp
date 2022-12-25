@@ -18,8 +18,13 @@ struct ChatAppApp: App {
         WindowGroup {
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            MainTabView()
-                .preferredColorScheme(isDarkMode ? .dark : .light)
+//            MainTabView()
+            
+            
+            NavigationView {
+                ChatRoom()
+            }
+              //  .preferredColorScheme(isDarkMode ? .dark : .light)
             
             
         }

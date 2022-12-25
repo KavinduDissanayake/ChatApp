@@ -11,10 +11,18 @@
 		CF07F4732958182E007BDB4F /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F4722958182E007BDB4F /* ProfileScreen.swift */; };
 		CF07F47729581FC3007BDB4F /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F47629581FC3007BDB4F /* MenuItem.swift */; };
 		CF07F47929582112007BDB4F /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F47829582112007BDB4F /* LargeButton.swift */; };
+		CF07F47D29582BE9007BDB4F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F47C29582BE9007BDB4F /* User.swift */; };
+		CF07F48029582C52007BDB4F /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F47F29582C52007BDB4F /* DummyModel.swift */; };
+		CF07F48429582D69007BDB4F /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F48329582D69007BDB4F /* ChatRoom.swift */; };
+		CF07F487295830BB007BDB4F /* ChatRoomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F486295830BB007BDB4F /* ChatRoomHeader.swift */; };
+		CF07F48929583443007BDB4F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F48829583443007BDB4F /* CustomButton.swift */; };
+		CF07F48B2958377D007BDB4F /* Constsnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F48A2958377D007BDB4F /* Constsnt.swift */; };
+		CF07F48D29584721007BDB4F /* KeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F48C29584721007BDB4F /* KeyboardHandler.swift */; };
 		CF433FC42956D06A00FFFB6D /* ColorConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF433FC32956D06A00FFFB6D /* ColorConstant.swift */; };
 		CF433FC62956DB1100FFFB6D /* ChatUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF433FC52956DB1100FFFB6D /* ChatUserView.swift */; };
 		CF433FC82956DCB000FFFB6D /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF433FC72956DCB000FFFB6D /* Font+Extensions.swift */; };
 		CF433FCC2956E30900FFFB6D /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF433FCB2956E30900FFFB6D /* HeaderView.swift */; };
+		CF573CDF2958817200A263B1 /* MessageInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF573CDE2958817200A263B1 /* MessageInput.swift */; };
 		CF635D962955AEF700B66D53 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF635D952955AEF700B66D53 /* ViewRouter.swift */; };
 		CF635D982955AFC200B66D53 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF635D972955AFC200B66D53 /* RootView.swift */; };
 		CF635D9E2955B88A00B66D53 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF635D9D2955B88A00B66D53 /* ChatList.swift */; };
@@ -37,6 +45,13 @@
 		CF07F47429581CCB007BDB4F /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		CF07F47629581FC3007BDB4F /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CF07F47829582112007BDB4F /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
+		CF07F47C29582BE9007BDB4F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CF07F47F29582C52007BDB4F /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
+		CF07F48329582D69007BDB4F /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
+		CF07F486295830BB007BDB4F /* ChatRoomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomHeader.swift; sourceTree = "<group>"; };
+		CF07F48829583443007BDB4F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		CF07F48A2958377D007BDB4F /* Constsnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constsnt.swift; sourceTree = "<group>"; };
+		CF07F48C29584721007BDB4F /* KeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandler.swift; sourceTree = "<group>"; };
 		CF433FBC2956CBD200FFFB6D /* DMSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Regular.ttf"; sourceTree = "<group>"; };
 		CF433FBF2956CBD200FFFB6D /* DMSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Bold.ttf"; sourceTree = "<group>"; };
 		CF433FC02956CBD200FFFB6D /* DMSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DMSans-Medium.ttf"; sourceTree = "<group>"; };
@@ -45,6 +60,7 @@
 		CF433FC52956DB1100FFFB6D /* ChatUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUserView.swift; sourceTree = "<group>"; };
 		CF433FC72956DCB000FFFB6D /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		CF433FCB2956E30900FFFB6D /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		CF573CDE2958817200A263B1 /* MessageInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInput.swift; sourceTree = "<group>"; };
 		CF635D952955AEF700B66D53 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		CF635D972955AFC200B66D53 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CF635D9D2955B88A00B66D53 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
@@ -91,6 +107,58 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		CF07F47A29582B38007BDB4F /* Repositry */ = {
+			isa = PBXGroup;
+			children = (
+				CF07F47B29582B4E007BDB4F /* Model */,
+			);
+			path = Repositry;
+			sourceTree = "<group>";
+		};
+		CF07F47B29582B4E007BDB4F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CF07F47C29582BE9007BDB4F /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CF07F47E29582C2A007BDB4F /* Dummy */ = {
+			isa = PBXGroup;
+			children = (
+				CF07F47F29582C52007BDB4F /* DummyModel.swift */,
+			);
+			path = Dummy;
+			sourceTree = "<group>";
+		};
+		CF07F48129582D49007BDB4F /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				CF635D9F2955B9CD00B66D53 /* Components */,
+				CF635D9D2955B88A00B66D53 /* ChatList.swift */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		CF07F48229582D55007BDB4F /* ChatRoom */ = {
+			isa = PBXGroup;
+			children = (
+				CF07F48529582D85007BDB4F /* Components */,
+				CF07F48329582D69007BDB4F /* ChatRoom.swift */,
+			);
+			path = ChatRoom;
+			sourceTree = "<group>";
+		};
+		CF07F48529582D85007BDB4F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CF07F486295830BB007BDB4F /* ChatRoomHeader.swift */,
+				CF07F48829583443007BDB4F /* CustomButton.swift */,
+				CF573CDE2958817200A263B1 /* MessageInput.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		CF433FBA2956CBB700FFFB6D /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,9 +192,12 @@
 		CF635D912955AE9600B66D53 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CF07F47E29582C2A007BDB4F /* Dummy */,
 				CF433FBA2956CBB700FFFB6D /* Fonts */,
 				CF635D922955AEB600B66D53 /* Navigation */,
 				CF433FC32956D06A00FFFB6D /* ColorConstant.swift */,
+				CF07F48A2958377D007BDB4F /* Constsnt.swift */,
+				CF07F48C29584721007BDB4F /* KeyboardHandler.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -179,8 +250,8 @@
 		CF635D9C2955B87900B66D53 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				CF635D9F2955B9CD00B66D53 /* Components */,
-				CF635D9D2955B88A00B66D53 /* ChatList.swift */,
+				CF07F48229582D55007BDB4F /* ChatRoom */,
+				CF07F48129582D49007BDB4F /* ChatList */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -216,6 +287,7 @@
 				CF433FC12956CC1B00FFFB6D /* Info.plist */,
 				CF635D902955AE8A00B66D53 /* App */,
 				CF635D9A2955B85300B66D53 /* View+ViewModel */,
+				CF07F47A29582B38007BDB4F /* Repositry */,
 				CF635D912955AE9600B66D53 /* Utilities */,
 				CFC2A4A62955774C00DE6AE9 /* Assets.xcassets */,
 				CFC2A4AB2955774C00DE6AE9 /* Persistence.swift */,
@@ -323,11 +395,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF573CDF2958817200A263B1 /* MessageInput.swift in Sources */,
 				CF07F47729581FC3007BDB4F /* MenuItem.swift in Sources */,
 				CF635D962955AEF700B66D53 /* ViewRouter.swift in Sources */,
 				CFC2A4BA29557C6D00DE6AE9 /* TabItemData.swift in Sources */,
 				CFC2A4BC29557C8A00DE6AE9 /* TabItemView.swift in Sources */,
 				CFC2A4B629557A3A00DE6AE9 /* HomePage.swift in Sources */,
+				CF07F48D29584721007BDB4F /* KeyboardHandler.swift in Sources */,
 				CF635D982955AFC200B66D53 /* RootView.swift in Sources */,
 				CFC2A4BE29557CFA00DE6AE9 /* MainTabView.swift in Sources */,
 				CFC2A4AC2955774C00DE6AE9 /* Persistence.swift in Sources */,
@@ -335,12 +409,18 @@
 				CFC2A4AF2955774C00DE6AE9 /* ChatApp.xcdatamodeld in Sources */,
 				CF433FC62956DB1100FFFB6D /* ChatUserView.swift in Sources */,
 				CF433FCC2956E30900FFFB6D /* HeaderView.swift in Sources */,
+				CF07F487295830BB007BDB4F /* ChatRoomHeader.swift in Sources */,
+				CF07F48B2958377D007BDB4F /* Constsnt.swift in Sources */,
+				CF07F48029582C52007BDB4F /* DummyModel.swift in Sources */,
 				CF433FC82956DCB000FFFB6D /* Font+Extensions.swift in Sources */,
 				CFC2A4A52955774A00DE6AE9 /* ContentView.swift in Sources */,
 				CFC2A4A32955774A00DE6AE9 /* ChatAppApp.swift in Sources */,
+				CF07F48929583443007BDB4F /* CustomButton.swift in Sources */,
 				CF433FC42956D06A00FFFB6D /* ColorConstant.swift in Sources */,
 				CF07F4732958182E007BDB4F /* ProfileScreen.swift in Sources */,
+				CF07F48429582D69007BDB4F /* ChatRoom.swift in Sources */,
 				CF07F47929582112007BDB4F /* LargeButton.swift in Sources */,
+				CF07F47D29582BE9007BDB4F /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct HeaderView: View {
-    private let dHeight = UIScreen.main.bounds.height
     var title:String
     var body: some View {
         
@@ -19,7 +18,7 @@ struct HeaderView: View {
             Spacer()
             
         }
-        .padding(.top,dHeight * 20/375)
+        .padding(.top,mainScreenHieght * 20/375)
     }
 }
 
