@@ -15,13 +15,18 @@ struct TabItemView: View {
         VStack {
             Image(data.image)
                 .resizable()
-//                .aspectRatio(contentMode: .fit)
                 .scaledToFit()
-                .frame(width: 28, height: 28)
-              .animation(.default)
-                .padding()
-                   .background( isSelected ? themeColor :  nil )
-                   .cornerRadius(8)
+                .frame(width: isSelected ? 24 : 28,
+                       height: isSelected ? 24 : 28
+                )
+               // .frame(width: <#T##CGFloat?#>)
+                .animation(.default)
+                .padding(.all ,8)
+                .background( isSelected ? themeColor :  nil )
+                .cornerRadius(8)
+                .foregroundColor(grayColor)
+              //  .padding()
+              //  .padding( isSelected ? 10 :  0 )
             
         }
     }
@@ -30,7 +35,7 @@ struct TabItemView: View {
 
 struct TabItemView_Previews: PreviewProvider {
     static var previews: some View {
-        TabItemView(data: TabItemData(image: "ic_home",title: ""), isSelected: false)
+        TabItemView(data: TabItemData(image: "ic_home",title: ""), isSelected: true)
             .previewLayout(.sizeThatFits)
     }
 }
@@ -61,7 +66,7 @@ struct TabBottomView: View {
             }
         }
         .frame(width: width, height: height)
-        .background(Color.white)
+        .background(cardColor)
         .cornerRadius(13)
         .shadow(radius: 5, x: 0, y: 4)
     }
@@ -69,7 +74,6 @@ struct TabBottomView: View {
 
 
 struct CustomTabView<Content: View>: View {
-    
     let tabs: [TabItemData]
     @Binding var selectedIndex: Int
     @ViewBuilder let content: (Int) -> Content
@@ -82,6 +86,7 @@ struct CustomTabView<Content: View>: View {
                         .tag(index)
                 }
             }
+            // .background(Color.red)
             
             VStack {
                 Spacer()
@@ -94,16 +99,20 @@ struct CustomTabView<Content: View>: View {
 
 
 enum TabType: Int, CaseIterable {
-    case home = 1
-    case myFile
+    case mychat = 0
+    case mytask
+    case verifyed
     case profile
+    
     
     var tabItem: TabItemData {
         switch self {
-        case .home:
-            return TabItemData(image: "ic_home",title: "Home")
-        case .myFile:
-            return TabItemData(image: "ic_chat", title: "Chat")
+        case .mychat:
+            return TabItemData(image: "ic_chat",title: "My Chat")
+        case .mytask:
+            return TabItemData(image: "ic_my_task", title: "mytask")
+        case .verifyed:
+            return TabItemData(image: "ic_verifyed", title: "verifyed")
         case .profile:
             return TabItemData(image: "ic_user",title: "Profile")
         }

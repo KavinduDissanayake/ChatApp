@@ -11,4 +11,8 @@ import SwiftUI
 
 //MARK: - COLOR
 let themeColor: Color = Color("#7069DB")
-let clearColor: Color = Color.clear
+let  whiteColor: Color = Color.white
+let  backgroundColor: Color = Color("#191919")
+let  cardColor: Color = Color("#2f2f34")
+
+let  grayColor: Color = Color("#E3E3E3")

@@ -13,22 +13,24 @@ struct MainTabView: View {
     
     var body: some View {
         CustomTabView(tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $selectedIndex) { index in
-            let type = TabType(rawValue: index) ?? .home
+            let type = TabType(rawValue: index) ?? .mychat
             getTabView(type: type)
+        }.onAppear{
+            print("selectedIndex\(selectedIndex)")
         }
     }
     
     @ViewBuilder
     func getTabView(type: TabType) -> some View {
         switch type {
-        case .home:
-            
+        case .mychat:
             ChatList()
-            //HomePage()
-        case .myFile:
+        case .mytask:
+            HomePage()
+        case .verifyed:
             HomePage()
         case .profile:
-            HomePage()
+            ProfileScreen()
         }
     }
 }

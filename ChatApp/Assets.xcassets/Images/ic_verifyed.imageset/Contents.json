@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "outline_chat_bubble_outline_black_24pt_1x.png",
+      "filename" : "outline_verified_user_black_24pt_1x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "outline_chat_bubble_outline_black_24pt_2x.png",
+      "filename" : "outline_verified_user_black_24pt_2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "outline_chat_bubble_outline_black_24pt_3x.png",
+      "filename" : "outline_verified_user_black_24pt_3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
