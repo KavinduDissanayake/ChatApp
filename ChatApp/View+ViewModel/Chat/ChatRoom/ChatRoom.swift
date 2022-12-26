@@ -9,42 +9,71 @@ import SwiftUI
 
 struct ChatRoom: View {
     
-    @StateObject private var keyboardHandler = KeyboardHandler()
+    @StateObject  var vm = ChatRoomVM()
     
     
     var body: some View {
         
         ZStack {
-            backgroundColor
+         
             
             VStack{
                 
                 ChatRoomHeader(title:"Sanduni")
                 
-                GeometryReader { geometry in
-                    
-                    //MARK:- CustomScrollView
-                    CustomScrollView(scrollToEnd: true) {
+             
+                VStack {
+                    GeometryReader { geometry in
                         
-                        LazyVStack {
+                        //MARK:- CustomScrollView
+                        CustomScrollView(scrollToEnd: true) {
                             
-                            Text("Test")
-                        }//:LazyVStack
+                            LazyVStack {
+                                
+                                SenderTextMessageCellView()
+                                ReceiveTextMessageCellView()
+                                
+                                SenderTextMessageCellView()
+                                
+                                ReceiveTextMessageCellView()
+                                ReceiveTextMessageCellView()
+
+                            }//:LazyVStack
+                            .padding(.vertical,8)
                         
-                    }//:LazyVStack
-                    
-                    
-                }//:GeometryReader
-                
+                        }//:LazyVStack
+                       
+                        
+                    }//:GeometryReader
+                   
+                }
+                .background(  chatBackgroundColor)
             }//:VStack
-            
+           
             VStack {
                 Spacer()
                 
-                
-                MessageInput()
-              
+                MessageInput(textMessage: $vm.textFiled, attachmentTapCallBack: {
+                    
+                }, sendTapCallBack:{
+                    
+               
+                    vm.sendMessage(){ status,message in
+
+                        if status {
+
+                        }
+
+                    }
+                })
             }//:VStack
+            
+            
+            
+            
+            
+            //MARK: - ALERT
+            CommonAlert(isShowAlert: $vm.isShowAlert, alertTitle: vm.alertTitle, alertMessage:vm.alertMessage)
             
         }//:ZStack
         .navigationBarHidden(true)
@@ -92,7 +121,7 @@ struct CustomScrollView<Content>: View where Content: View {
         .frame(height: geometry.size.height, alignment: (reversed ? .bottom : .top))
         .offset(y: contentOffset + scrollOffset)
         .animation(.easeInOut)
-        .background(Color.white)
+       // .background(Color.white)
         .gesture(DragGesture()
             .onChanged { self.onDragChanged($0) }
             .onEnded { self.onDragEnded($0, outerHeight: geometry.size.height) }

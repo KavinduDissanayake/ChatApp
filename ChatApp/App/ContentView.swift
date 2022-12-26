@@ -13,7 +13,6 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
            RootView(router: ViewRouter.shared)
-           
         }//:NavigationView
     }
 }
