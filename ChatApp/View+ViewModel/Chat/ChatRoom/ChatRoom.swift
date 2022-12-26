@@ -23,23 +23,33 @@ struct ChatRoom: View {
                 
              
                 VStack {
+                    
                     GeometryReader { geometry in
                         
                         //MARK:- CustomScrollView
                         CustomScrollView(scrollToEnd: true) {
                             
+                           
                             LazyVStack {
                                 
-                                SenderTextMessageCellView()
-                                ReceiveTextMessageCellView()
-                                
-                                SenderTextMessageCellView()
-                                
-                                ReceiveTextMessageCellView()
-                                ReceiveTextMessageCellView()
-
-                            }//:LazyVStack
-                            .padding(.vertical,8)
+                                ForEach(Array(vm.messagesList.enumerated()), id: \.offset) { index, assessmentsModel in
+                                    SenderTextMessageCellView()
+                                }
+                            }
+//
+//                            LazyVStack {
+//
+//
+//
+////                                ReceiveTextMessageCellView()
+////
+////                                SenderTextMessageCellView()
+////
+////                                ReceiveTextMessageCellView()
+////                                ReceiveTextMessageCellView()
+//
+//                            }//:LazyVStack
+//                            .padding(.vertical,8)
                         
                         }//:LazyVStack
                        
@@ -56,20 +66,13 @@ struct ChatRoom: View {
                 MessageInput(textMessage: $vm.textFiled, attachmentTapCallBack: {
                     
                 }, sendTapCallBack:{
-                    
-               
-                    vm.sendMessage(){ status,message in
-
-                        if status {
-
-                        }
-
-                    }
+                    await sendMessage()
                 })
             }//:VStack
-            
-            
-            
+            .onAppear{
+                
+                vm.fetchData()
+            }
             
             
             //MARK: - ALERT
@@ -78,6 +81,18 @@ struct ChatRoom: View {
         }//:ZStack
         .navigationBarHidden(true)
         
+    }
+    
+    
+    func sendMessage() async{
+        startLoading()
+        await vm.sendMessage(){ status in
+            stopLoading()
+            if status {
+            
+            }
+
+        }
     }
 }
 
