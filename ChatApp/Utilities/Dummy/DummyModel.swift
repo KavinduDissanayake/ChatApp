@@ -13,3 +13,5 @@ let dummyUse1 = User(_id: "1", uuid: "ssd", firstName: "Kavindu", lastName: "Dis
 
 let dummyUser2 = User(_id: "2", uuid: "ssd", firstName: "Chamth", lastName: "Rajapaksha", fullName: "Kavinud Dissanayake", email: "abc@gmail.com", avatarUrl: "https://ui-avatars.com/api/?name=Chamth+Dissanayake", timezone: nil, accessToken: nil)
  
+
+let dumyMessage = Message(id: "1", idFrom: "1", idTo: "2", message: "Test", isSeen: false, type: "text", time: 0)

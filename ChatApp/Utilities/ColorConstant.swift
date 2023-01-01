@@ -19,3 +19,4 @@ let  grayColor: Color = Color("#E3E3E3")
 
 
 let chatBackgroundColor: Color = Color("#f7f7fd")
+let redColor: Color = Color("#FF3B30")
