@@ -6,6 +6,8 @@
 //
 import FirebaseFirestore
 import Foundation
+import Combine
+import SwiftDate
 
 
 //struct Note: Codable {
@@ -13,15 +15,59 @@ import Foundation
 //    var title: String?
 //}
 
-struct Message:Identifiable,Codable {
+
+public struct MessageSection: Codable,Identifiable {
     
+    public var id = UUID()
+    
+//    public static func == (lhs: MessageSection, rhs: MessageSection) -> Bool {
+//        lh
+//    }
+    
+
+    var title: String?
+    var createdAt: Int?
+    var messages: [Message] = []
+
+    var count: Int {
+        return messages.count
+    }
+
+    init(_ title: String, createdAt: Int) {
+        // Title
+        self.title = title
+        self.createdAt = createdAt
+    }
+
+    subscript (index: Int) -> Message {
+        get {
+            return messages[index]
+        }
+        set {
+            messages[index] = newValue
+        }
+    }
+
+    public func hash(into hasher: inout Hasher){
+        hasher.combine(self.title)
+    }
+}
+
+
+
+
+
+
+struct Message:Identifiable,Codable {
     var id: String = UUID().uuidString  // @DocumentID to fetch the identifier from Firestore
     var idFrom = ""
     var idTo = ""
     var message = ""
     var isSeen = false
     var type = ""
-    var time = ""
+    var time = 0
+ 
+    
     
     var dictionary:[String:Any]{
         return [
@@ -30,98 +76,22 @@ struct Message:Identifiable,Codable {
             "message":message,
             "isSeen":isSeen,
             "type":type,
-            "time":time
+            "time":FieldValue.serverTimestamp()
         ]
     }
     
+    
+    func getMessageTime() -> String{
+        let time = DateInRegion(milliseconds: time ?? 0, region: .current).toFormat("hh:mm a")
+        return time
+    }
+    
+    
 }
 
-//updateUserMessageList(
-//     {bool isFile = false, String fileType = "@Image"}) async {
-//   CollectionReference users = firestore.collection("users");
-//
-//   final checkChatsFriend = await users
-//       .doc(contactUserID.value) // passs contact id
-//       .collection("chats")
-//       .doc(getConversationID(currentUserID.value, contactUserID.value))
-//       .get();
-//
-//   if (checkChatsFriend.exists) {
-//     // exist on friend DB
-//     // first check total unread
-//     final checkTotalUnread = await firestore
-//         .collection('chatroom')
-//         .doc(getConversationID(currentUserID.value, contactUserID.value))
-//         .collection('chats')
-//         .where("isSeen", isEqualTo: false)
-//         .where("idTo", isEqualTo: contactUserID.value)
-//         .get();
-//
-//     // total unread for friend
-//     totalUnread = checkTotalUnread.docs.length;
-//
-//     //update
-//     await users
-//         .doc(contactUserID.value) //Contact ID
-//         .collection("chats")
-//         .doc(getConversationID(currentUserID.value, contactUserID.value))
-//         .update({
-//           "lastMessage": isFile ? fileType : messageText.text,
-//           "lastTime": DateTime.now().toUtc().toString(),
-//           "total_unread": totalUnread,
-//       "connectionName": SharedPrefs.getUserName() ?? "",
-//         })
-//         .then((_) => showDebugLogger(debug: 'Updated'))
-//         .catchError(
-//             (error) => showErrorLogger(error: 'Update failed: $error'));
-//
-//     messageText.clear();
-//   } else {
-//     await users
-//         .doc(contactUserID.value)
-//         .collection("chats")
-//         .doc(getConversationID(currentUserID.value, contactUserID.value))
-//         .set({
-//           "connection": currentUserID.value,
-//           "lastMessage": messageText.text,
-//           "lastTime": DateTime.now().toUtc().toString(),
-//           "total_unread": 1,
-//          "connectionName": SharedPrefs.getUserName() ?? "",
-//
-//     })
-//         .then((_) => showDebugLogger(debug: 'Updated'))
-//         .catchError(
-//             (error) => showErrorLogger(error: 'Update failed: $error'));
-//
-//     messageText.clear();
-//     //Alert Trigger
-//     showDebugLogger(debug: ('messageSuccess').tr);
-//
-//     // DialogHelper.shared
-//     //     .successSnackBar(('messageTitle').tr, ('messageSuccess').tr);
-//   }
-// }
 
-//Map<String, dynamic> messages = {
-//       "idFrom": currentUserID.value,
-//       "idTo": contactUserID.value,
-//       "message": messageText.text,
-//       "isSeen": false,
-//       "type": "text",
-//       "time": DateTime.now().toUtc().toString(),
-//     };
 //
-//     await firestore
-//         .collection('chatroom')
-//         .doc(getConversationID(currentUserID.value, contactUserID.value))
-//         .collection('chats')
-//         .add(messages)
-//         .then((doc) {
-//       sendMessageMessageNotification(
-//           messageText.text, "text", contactUserID.value);
-//     }).catchError((onError) {
-//       showErrorLogger(error: onError.toString());
-//     });
+
 
 class ChatRoomVM: BaseVM {
     
@@ -134,19 +104,14 @@ class ChatRoomVM: BaseVM {
     
     @Published var messagesList: [Message] = []// Reference to our Mo
     
-    //    @Published var notes = [Note]() // Reference to our Model
-    //    private var databaseReference = Firestore.firestore().collection("Notes") // reference to our Firestore's collection
-    //    // function to post data
-    //    func addData(title: String) {
-    //        do {
-    //            _ = try databaseReference.addDocument(data: ["title": title])
-    //        }
-    //        catch {
-    //            print(error.localizedDescription)
-    //        }
-    //    }
+    
+    @Published var chatDataSource =  ChatDataSource()
+
     
     var totalUnread = 0
+    
+    @Published  var sections: [MessageSection] = []
+    var allMessages: [Message] = []
 }
 
 //show alert
@@ -171,14 +136,19 @@ extension ChatRoomVM {
                    print("No documents")
                    return
                }
-
+              
+              
                self.messagesList = documents.map { (queryDocumentSnapshot) -> Message in
                    let data = queryDocumentSnapshot.data()
-                   let surname = data["title"] as? String ?? ""
-                   
-                   
-                   return Message(message: "Text")
+
+                   let time = data["time"] as? Timestamp
+                   let date = Date(timeIntervalSince1970: TimeInterval(time?.seconds ?? 0))
+                   let idFrom = data["idFrom"] as? String
+                   let type = data["type"] as? String
+                   return Message(idFrom:idFrom ?? "",message: "Text",type:type ?? "", time: Int(date.toMillis()))
                }
+                
+                self.chatDataSource.addMessages(messages:self.messagesList)
            }
        }
 }
@@ -198,8 +168,8 @@ extension ChatRoomVM {
         
         //conection check
         
-        let message = Message(idFrom: currentUser._id ?? "", idTo: contactUser._id ?? "",message: textFiled, isSeen: false, type: "text", time: "")
-        
+        let message = Message(idFrom: currentUser._id ?? "", idTo: contactUser._id ?? "",message: textFiled, isSeen: false, type: "text")
+   
         firestore
             .collection("chatroom")
             .document(getCurrentConversationID())
@@ -220,6 +190,17 @@ extension ChatRoomVM {
         
         await  updateMessage()
     }
+    
+    
+    
+    
+}
+
+
+//image message
+extension ChatRoomVM {
+    
+    
 }
 
 
@@ -295,5 +276,53 @@ extension ChatRoomVM {
         
         
         
+    }
+}
+
+
+extension ChatRoomVM {
+ 
+
+//    public func addMessage(message:Message){
+//
+//        let title = DateInRegion(milliseconds: message.time ?? 0, region: .current).toFormat("dd MMM, YYYY")
+//
+//
+//        if !allMessages.contains(where: { $0.id == message.id} ) {
+//            if let firstIndex = sections.firstIndex(where: {$0.title == title}) {
+//                sections[firstIndex].messages.append(message)
+//                allMessages.append(message)
+//            }else{
+//                //found new date groupe
+//                //add new section
+//                var newSection = MessageSection(title, createdAt: message.time ?? 0)
+//                    newSection.messages.append(message)
+//                    allMessages.append(message)
+//                    sections.append(newSection)
+//            }
+//        }
+//
+//    }
+//
+//    public func addMessages(messages:[Message]){
+//        sections = []
+//        for message in messages {
+//                addMessage(message: message)
+//        }
+//
+//        sections.sort(by: {$0.createdAt ?? 0 < $1.createdAt ?? 0})
+//        for index in 0..<sections.count{
+//            sections[index].messages.sort(by: { $0.time ?? 0 < $1.time ?? 0 })
+//        }
+//    }
+
+
+
+}
+
+
+extension Date {
+    func toMillis() -> Int64! {
+        return Int64(self.timeIntervalSince1970 * 1000)
     }
 }

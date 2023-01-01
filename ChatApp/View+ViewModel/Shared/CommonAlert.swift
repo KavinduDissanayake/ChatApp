@@ -19,7 +19,6 @@ struct CommonAlert: View {
     //MARK: - BODY
     var body: some View {
         Text("")
-//            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         //MARK: - ALERT
         .alert(isPresented: $isShowAlert) {
             Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("Ok"),action: {
