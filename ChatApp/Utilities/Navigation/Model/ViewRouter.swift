@@ -24,5 +24,6 @@ class ViewRouter: ObservableObject {
     fileprivate init() {
         currentRoot = .userTabs
     }
+    
 }
 

@@ -56,6 +56,7 @@ struct CustomAlert: View {
                         
                         // left button
                         Button {
+                            isShowAlert.toggle()
                             action?()
                         } label: {
                             Text("Ok")

@@ -28,8 +28,6 @@ struct BottomSheet: View {
                         cardColor
                     )
                     .cornerRadius(10, corners: [.topLeft, .topRight])
-                
-                
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)

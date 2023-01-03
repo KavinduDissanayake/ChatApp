@@ -16,3 +16,13 @@ class BaseVM: ObservableObject {
     @Published var alertTitle = ""
     
 }
+
+
+//show alert
+extension BaseVM {
+    func showAlert(error:Error?){
+        self.isShowAlert = true
+        self.alertTitle = "Error"
+        self.alertMessage = error?.localizedDescription ?? ""
+    }
+}

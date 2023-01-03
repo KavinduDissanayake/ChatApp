@@ -6,22 +6,31 @@
 //
 
 import SwiftUI
+import UniformTypeIdentifiers
 
 struct ChatRoom: View {
     
     @StateObject  var vm = ChatRoomVM()
     
+    @State private var showFilePickerAlert = false
+    
+    
+    
+    @State private var showFilePicker = false
+    @State private var showImagePicker = false
+    
+    @State var activeUIType:UTType = .image
+    
     
     var body: some View {
         
         ZStack {
-         
             
             VStack{
                 
                 ChatRoomHeader(title:"Sanduni")
                 
-             
+                
                 VStack {
                     
                     GeometryReader { geometry in
@@ -29,54 +38,115 @@ struct ChatRoom: View {
                         //MARK:- CustomScrollView
                         CustomScrollView(scrollToEnd: true) {
                             
-                           
+                            
                             LazyVStack {
                                 
-                                ForEach(Array(vm.messagesList.enumerated()), id: \.offset) { index, assessmentsModel in
-                                    SenderTextMessageCellView()
-                                }
-                            }
-//
-//                            LazyVStack {
-//
-//
-//
-////                                ReceiveTextMessageCellView()
-////
-////                                SenderTextMessageCellView()
-////
-////                                ReceiveTextMessageCellView()
-////                                ReceiveTextMessageCellView()
-//
-//                            }//:LazyVStack
-//                            .padding(.vertical,8)
+                                ForEach(Array(vm.sectionsList.enumerated()), id: \.offset) { index, section in
+                                    
+                                    Text(section.title ?? "")
+                                        .font(.customFont(.DMSansBold, 14))
+                                        .padding(8)
+                                        .background(themeColor)
+                                        .foregroundColor(whiteColor)
+                                        .cornerRadius(5, corners: .allCorners)
+                                    
+                                    
+                                    ForEach(Array(( section.messages  ).enumerated()), id: \.offset) { index, message in
+                                        
+                                        getMessage(message: message)
+                                        
+                                        
+                                    }//:ForEach
+                                    
+                                    
+                                }//:ForEach
+                            }//:LazyVStack
+                            
+                            
+                        }//:CustomScrollView
                         
-                        }//:LazyVStack
-                       
                         
                     }//:GeometryReader
-                   
+                    
                 }
                 .background(  chatBackgroundColor)
             }//:VStack
-           
+            
             VStack {
+                
                 Spacer()
                 
                 MessageInput(textMessage: $vm.textFiled, attachmentTapCallBack: {
-                    
+                    showFilePickerAlert.toggle()
                 }, sendTapCallBack:{
                     await sendMessage()
                 })
+                
+                
             }//:VStack
             .onAppear{
-                
-                vm.fetchData()
+                startLoading()
+                vm.fetchData(){ status in
+                    stopLoading()
+                    
+                }
             }
             
             
             //MARK: - ALERT
-            CommonAlert(isShowAlert: $vm.isShowAlert, alertTitle: vm.alertTitle, alertMessage:vm.alertMessage)
+            CustomAlert(isShowAlert: $vm.isShowAlert, alertTitle: vm.alertTitle, alertMessage:vm.alertMessage)
+            
+            
+            //MARK: - FilePicker
+            CustomFilePicker(isImporting: $showFilePicker, activeUIType:$activeUIType){
+                result in
+                
+                do {
+                    let url = try result.get()
+                    startLoading()
+                    vm.uploadFile(fileUrl: url, fileType: .pdf){ succes in
+                        stopLoading()
+                    }
+                } catch{
+                    print ("error reading: \(error.localizedDescription)")
+                }
+                
+            }
+            
+            
+            //MARK: - Image Picker
+            ImagePickerView(showSheet:$showImagePicker){ (image,url) in
+                                
+                startLoading()
+                vm.uploadFile(fileUrl: url, fileType: .image){ succes in
+                    stopLoading()
+                    
+                    
+                }
+                
+            }
+            
+            BottomSheet(isShowing:$showFilePickerAlert, content:
+                            
+                            AnyView(
+                                BottomoOption(pdfTapCallback: {
+                                    
+                                    activeUIType = .pdf
+                                    showFilePickerAlert.toggle()
+                                    showFilePicker.toggle()
+                                    
+                                }, imageTapCallback: {
+                                    
+                                    showImagePicker.toggle()
+                                    showFilePickerAlert.toggle()
+                                    
+                                    
+                                }, cancelTapCallback: {
+                                    
+                                    showFilePickerAlert.toggle()
+                                })
+                            )
+            )
             
         }//:ZStack
         .navigationBarHidden(true)
@@ -86,14 +156,24 @@ struct ChatRoom: View {
     
     func sendMessage() async{
         startLoading()
-        await vm.sendMessage(){ status in
+         vm.chatMessage(){ status in
             stopLoading()
             if status {
-            
-            }
 
+            }
         }
     }
+    
+    
+    func  getMessage(message:Message) -> AnyView{
+        if message.idFrom == vm.currentUser._id ?? "" {
+            return AnyView(SenderTextMessageCellView())
+        }else{
+            return AnyView(ReceiveMessageCellView(message:message))
+        }
+        
+    }
+    
 }
 
 struct ChatRoom_Previews: PreviewProvider {
@@ -104,97 +184,9 @@ struct ChatRoom_Previews: PreviewProvider {
 
 
 
-struct CustomScrollView<Content>: View where Content: View {
-    var axes: Axis.Set = .vertical
-    var reversed: Bool = false
-    var scrollToEnd: Bool = false
-    var content: () -> Content
-    
-    @State private var contentHeight: CGFloat = .zero
-    @State private var contentOffset: CGFloat = .zero
-    @State private var scrollOffset: CGFloat = .zero
-    
-    var body: some View {
-        GeometryReader { geometry in
-            if self.axes == .vertical {
-                self.vertical(geometry: geometry)
-            } else {
-                // implement same for horizontal orientation
-            }
-        }
-        .clipped()
-    }
-    
-    private func vertical(geometry: GeometryProxy) -> some View {
-        VStack {
-            content()
-        }
-        .modifier(ViewHeightKey())
-        .onPreferenceChange(ViewHeightKey.self) {
-            self.updateHeight(with: $0, outerHeight: geometry.size.height)
-        }
-        .frame(height: geometry.size.height, alignment: (reversed ? .bottom : .top))
-        .offset(y: contentOffset + scrollOffset)
-        .animation(.easeInOut)
-       // .background(Color.white)
-        .gesture(DragGesture()
-            .onChanged { self.onDragChanged($0) }
-            .onEnded { self.onDragEnded($0, outerHeight: geometry.size.height) }
-        )
-    }
-    
-    private func onDragChanged(_ value: DragGesture.Value) {
-        self.scrollOffset = value.location.y - value.startLocation.y
-    }
-    
-    private func onDragEnded(_ value: DragGesture.Value, outerHeight: CGFloat) {
-        let scrollOffset = value.predictedEndLocation.y - value.startLocation.y
-        
-        self.updateOffset(with: scrollOffset, outerHeight: outerHeight)
-        self.scrollOffset = 0
-    }
-    
-    private func updateHeight(with height: CGFloat, outerHeight: CGFloat) {
-        let delta = self.contentHeight - height
-        self.contentHeight = height
-        if scrollToEnd {
-            self.contentOffset = self.reversed ? height - outerHeight - delta : outerHeight - height
-        }
-        if abs(self.contentOffset) > .zero {
-            self.updateOffset(with: delta, outerHeight: outerHeight)
-        }
-    }
-    
-    private func updateOffset(with delta: CGFloat, outerHeight: CGFloat) {
-        let topLimit = self.contentHeight - outerHeight
-        
-        if topLimit < .zero {
-            self.contentOffset = .zero
-        } else {
-            var proposedOffset = self.contentOffset + delta
-            if (self.reversed ? proposedOffset : -proposedOffset) < .zero {
-                proposedOffset = 0
-            } else if (self.reversed ? proposedOffset : -proposedOffset) > topLimit {
-                proposedOffset = (self.reversed ? topLimit : -topLimit)
-            }
-            self.contentOffset = proposedOffset
-        }
-    }
-}
 
 
 
-struct ViewHeightKey: PreferenceKey {
-    static var defaultValue: CGFloat { 0 }
-    static func reduce(value: inout Value, nextValue: () -> Value) {
-        value = value + nextValue()
-    }
-}
 
-extension ViewHeightKey: ViewModifier {
-    func body(content: Content) -> some View {
-        return content.background(GeometryReader { proxy in
-            Color.clear.preference(key: Self.self, value: proxy.size.height)
-        })
-    }
-}
+
+
