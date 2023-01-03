@@ -55,6 +55,7 @@ struct Message:Identifiable,Codable {
     var type = ""
     var time = 0
     
+    
     var dictionary:[String:Any]{
         return [
             "idFrom":idFrom,
