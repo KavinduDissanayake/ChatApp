@@ -42,6 +42,9 @@
 		CF632C1529686F1B003A005D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C1429686F1B003A005D /* SocialLoginButton.swift */; };
 		CF632C17296871D3003A005D /* TextFiledInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C16296871D3003A005D /* TextFiledInput.swift */; };
 		CF632C19296878D5003A005D /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C18296878D5003A005D /* CommonButton.swift */; };
+		CF632C1B2968830C003A005D /* TextFiledPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C1A2968830C003A005D /* TextFiledPassword.swift */; };
+		CF632C1D29688695003A005D /* LoginViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C1C29688695003A005D /* LoginViewVM.swift */; };
+		CF632C1F296886F8003A005D /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C1E296886F8003A005D /* Validators.swift */; };
 		CF635D962955AEF700B66D53 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF635D952955AEF700B66D53 /* ViewRouter.swift */; };
 		CF635D982955AFC200B66D53 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF635D972955AFC200B66D53 /* RootView.swift */; };
 		CF635D9E2955B88A00B66D53 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF635D9D2955B88A00B66D53 /* ChatList.swift */; };
@@ -108,6 +111,9 @@
 		CF632C1429686F1B003A005D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
 		CF632C16296871D3003A005D /* TextFiledInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiledInput.swift; sourceTree = "<group>"; };
 		CF632C18296878D5003A005D /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
+		CF632C1A2968830C003A005D /* TextFiledPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiledPassword.swift; sourceTree = "<group>"; };
+		CF632C1C29688695003A005D /* LoginViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewVM.swift; sourceTree = "<group>"; };
+		CF632C1E296886F8003A005D /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		CF635D952955AEF700B66D53 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		CF635D972955AFC200B66D53 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CF635D9D2955B88A00B66D53 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
@@ -275,6 +281,7 @@
 			children = (
 				CF632C1329686F09003A005D /* Components */,
 				CF632C1129686B83003A005D /* LoginVIew.swift */,
+				CF632C1C29688695003A005D /* LoginViewVM.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -285,6 +292,7 @@
 				CF632C1429686F1B003A005D /* SocialLoginButton.swift */,
 				CF632C16296871D3003A005D /* TextFiledInput.swift */,
 				CF632C18296878D5003A005D /* CommonButton.swift */,
+				CF632C1A2968830C003A005D /* TextFiledPassword.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -310,6 +318,7 @@
 				CF671719295964B7001C53FE /* Handlers.swift */,
 				CF43F9A7296305EF00271CA3 /* StorageManager.swift */,
 				CF43F9A92963C5CF00271CA3 /* DatabaseManager.swift */,
+				CF632C1E296886F8003A005D /* Validators.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -609,6 +618,7 @@
 				CF671716295946CC001C53FE /* Extensions.swift in Sources */,
 				CF43F9AA2963C5CF00271CA3 /* DatabaseManager.swift in Sources */,
 				CF635D982955AFC200B66D53 /* RootView.swift in Sources */,
+				CF632C1B2968830C003A005D /* TextFiledPassword.swift in Sources */,
 				CF67171F29596B85001C53FE /* BaseView.swift in Sources */,
 				CFC2A4BE29557CFA00DE6AE9 /* MainTabView.swift in Sources */,
 				CFC2A4AC2955774C00DE6AE9 /* Persistence.swift in Sources */,
@@ -640,9 +650,11 @@
 				CF67171829594BCF001C53FE /* ReceiveMessageCellView.swift in Sources */,
 				CF07F4732958182E007BDB4F /* ProfileScreen.swift in Sources */,
 				CF07F48429582D69007BDB4F /* ChatRoom.swift in Sources */,
+				CF632C1F296886F8003A005D /* Validators.swift in Sources */,
 				CF07F47929582112007BDB4F /* LargeButton.swift in Sources */,
 				CF07F47D29582BE9007BDB4F /* User.swift in Sources */,
 				CF2D330F2961EA7300D286DE /* BottomSheet.swift in Sources */,
+				CF632C1D29688695003A005D /* LoginViewVM.swift in Sources */,
 				CF632C19296878D5003A005D /* CommonButton.swift in Sources */,
 				CF67171429594608001C53FE /* SenderTextMessageCellView.swift in Sources */,
 			);

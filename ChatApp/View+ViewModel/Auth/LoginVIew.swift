@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    //MARK: - PROPERITY
+    @StateObject var vm = LoginViewVM()
+    
     var body: some View {
         ZStack {
             
@@ -38,13 +42,13 @@ struct LoginView: View {
                                                  Text("Sign In")
                                                 .font(.customFont(.RalewayBold, 24))
                                                
-                                                TextFiledInput(name: "User Name", isValidation:  true, keyboard: .emailAddress, isValidationRuntime: .constant(true), textFiled: .constant(""))
-                                                .padding(.vertical,10)
+                                            TextFiledInput(name: "Email", isValidation: Validators().isValidEmailValidator(value:  vm.emailText).isSuccess, keyboard: .emailAddress, isValidationRuntime: $vm.emailValidation, textFiled: $vm.emailText)
+                                            //MARK: - VALIDATIONS
+                                            .validate(with: vm.emailText, validation: Validators().isValidEmailValidator)
                                             
-                                            
-                                                TextFiledInput(name: "User Name", isValidation:  true, keyboard: .emailAddress, isValidationRuntime: .constant(true), textFiled: .constant(""))
-                                             
-                                          
+                                            TextFiledPasswordNew(name: "Password", isValidation: $vm.passwordValidation, textFiled: $vm.passwordText)
+                                            //MARK: - VALIDATIONS
+                                            .validate(with: vm.passwordText, validation: Validators().isValidPasswordValidator)
                                             
                                             HStack{
                                                 Spacer()
@@ -69,6 +73,7 @@ struct LoginView: View {
                                       }
                                       .frame(height:  geometry.size.height*0.4)
                                       .padding(.all,16)
+                                      .padding(.vertical,20)
                                    
                                    
                                    

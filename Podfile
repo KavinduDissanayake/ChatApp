@@ -18,6 +18,8 @@ target 'ChatApp' do
   pod 'SwiftDate'
   pod 'SDWebImageSwiftUI'
 
+  #pod 'Regex'
+
 
 
 

@@ -38,7 +38,7 @@ struct TextFiledInput: View {
                     })
                     .placeholder(when: textFiled.isEmpty) {
                         Text(name
-                        )  .font(.customFont(.DMSansMedium, 14)).foregroundColor(.gray)
+                        )  .font(.customFont(.DMSansMedium, 14)).foregroundColor(grayColor)
                         
                     }
                     .padding()
@@ -57,10 +57,10 @@ struct TextFiledInput: View {
                                 }, label: {
                                     
                                     
-                                    Image( isValidation ? "ic_tick_inactive":"ic_remove")
+                                    Image( isValidation ? "ic_tick_active":"ic_remove")
                                         .resizable()
                                         .foregroundColor( isValidation ? themeColor : nil)
-                                        .frame(width: 20, height: 20)
+                                        .frame(width: 18, height: 18)
                                 })
                                 
                             }
@@ -98,7 +98,7 @@ struct TextFiledInput: View {
                 
             }//:VStack
             
-            .background(Color.white)
+           // .background(Color.white)
            
             
             
