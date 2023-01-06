@@ -28,13 +28,16 @@ struct ChatAppApp: App {
     
     var body: some Scene {
         WindowGroup {
+            
+            LoginView()
+            
            // ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
 //            MainTabView()
             
             
 //            NavigationView {
-                 ChatRoom()
+                // ChatRoom()
 //            }
               //  .preferredColorScheme(isDarkMode ? .dark : .light)
             

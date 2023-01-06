@@ -37,6 +37,11 @@
 		CF632C0929683FFD003A005D /* TextMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C0829683FFC003A005D /* TextMessageView.swift */; };
 		CF632C0B29684053003A005D /* PDFMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C0A29684053003A005D /* PDFMessageView.swift */; };
 		CF632C0D29684611003A005D /* LocationMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C0C29684611003A005D /* LocationMessageView.swift */; };
+		CF632C0F29685CD3003A005D /* ImageMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C0E29685CD3003A005D /* ImageMessageView.swift */; };
+		CF632C1229686B83003A005D /* LoginVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C1129686B83003A005D /* LoginVIew.swift */; };
+		CF632C1529686F1B003A005D /* SocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C1429686F1B003A005D /* SocialLoginButton.swift */; };
+		CF632C17296871D3003A005D /* TextFiledInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C16296871D3003A005D /* TextFiledInput.swift */; };
+		CF632C19296878D5003A005D /* CommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF632C18296878D5003A005D /* CommonButton.swift */; };
 		CF635D962955AEF700B66D53 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF635D952955AEF700B66D53 /* ViewRouter.swift */; };
 		CF635D982955AFC200B66D53 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF635D972955AFC200B66D53 /* RootView.swift */; };
 		CF635D9E2955B88A00B66D53 /* ChatList.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF635D9D2955B88A00B66D53 /* ChatList.swift */; };
@@ -98,6 +103,11 @@
 		CF632C0829683FFC003A005D /* TextMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextMessageView.swift; sourceTree = "<group>"; };
 		CF632C0A29684053003A005D /* PDFMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFMessageView.swift; sourceTree = "<group>"; };
 		CF632C0C29684611003A005D /* LocationMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationMessageView.swift; sourceTree = "<group>"; };
+		CF632C0E29685CD3003A005D /* ImageMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageMessageView.swift; sourceTree = "<group>"; };
+		CF632C1129686B83003A005D /* LoginVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVIew.swift; sourceTree = "<group>"; };
+		CF632C1429686F1B003A005D /* SocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginButton.swift; sourceTree = "<group>"; };
+		CF632C16296871D3003A005D /* TextFiledInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFiledInput.swift; sourceTree = "<group>"; };
+		CF632C18296878D5003A005D /* CommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonButton.swift; sourceTree = "<group>"; };
 		CF635D952955AEF700B66D53 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		CF635D972955AFC200B66D53 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		CF635D9D2955B88A00B66D53 /* ChatList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatList.swift; sourceTree = "<group>"; };
@@ -252,12 +262,31 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		CF433FC22956CC6A00FFFB6D /* launchScreen */ = {
+		CF433FC22956CC6A00FFFB6D /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
 				CF73CBDB2956C49D005E5D5F /* launchscreen.storyboard */,
 			);
-			path = launchScreen;
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		CF632C1029685E48003A005D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				CF632C1329686F09003A005D /* Components */,
+				CF632C1129686B83003A005D /* LoginVIew.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		CF632C1329686F09003A005D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				CF632C1429686F1B003A005D /* SocialLoginButton.swift */,
+				CF632C16296871D3003A005D /* TextFiledInput.swift */,
+				CF632C18296878D5003A005D /* CommonButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		CF635D902955AE8A00B66D53 /* App */ = {
@@ -313,9 +342,10 @@
 		CF635D9A2955B85300B66D53 /* View+ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CF632C1029685E48003A005D /* Auth */,
 				CF67171B29596889001C53FE /* Shared */,
 				CF07F47129581806007BDB4F /* Profile */,
-				CF433FC22956CC6A00FFFB6D /* launchScreen */,
+				CF433FC22956CC6A00FFFB6D /* LaunchScreen */,
 				CF635D9C2955B87900B66D53 /* Chat */,
 				CF635D9B2955B86800B66D53 /* Home */,
 				CFC2A4B729557C4A00DE6AE9 /* BottomTab */,
@@ -357,6 +387,7 @@
 				CF632C0829683FFC003A005D /* TextMessageView.swift */,
 				CF632C0A29684053003A005D /* PDFMessageView.swift */,
 				CF632C0C29684611003A005D /* LocationMessageView.swift */,
+				CF632C0E29685CD3003A005D /* ImageMessageView.swift */,
 			);
 			path = MessageCell;
 			sourceTree = "<group>";
@@ -564,8 +595,10 @@
 			files = (
 				CF573CDF2958817200A263B1 /* MessageInput.swift in Sources */,
 				CF07F47729581FC3007BDB4F /* MenuItem.swift in Sources */,
+				CF632C1529686F1B003A005D /* SocialLoginButton.swift in Sources */,
 				CF2D3304295FFA5E00D286DE /* ChatDataSource.swift in Sources */,
 				CF635D962955AEF700B66D53 /* ViewRouter.swift in Sources */,
+				CF632C0F29685CD3003A005D /* ImageMessageView.swift in Sources */,
 				CF2D33152961F59C00D286DE /* ImagePickerView.swift in Sources */,
 				CF2D330B296015D700D286DE /* CustomFilePicker.swift in Sources */,
 				CFC2A4BA29557C6D00DE6AE9 /* TabItemData.swift in Sources */,
@@ -593,9 +626,11 @@
 				CF2D330D2961E24900D286DE /* CustomAlert.swift in Sources */,
 				CF07F48029582C52007BDB4F /* DummyModel.swift in Sources */,
 				CF433FC82956DCB000FFFB6D /* Font+Extensions.swift in Sources */,
+				CF632C1229686B83003A005D /* LoginVIew.swift in Sources */,
 				CFC2A4A52955774A00DE6AE9 /* ContentView.swift in Sources */,
 				CF2D33112961ECCE00D286DE /* BottomOption.swift in Sources */,
 				CFC2A4A32955774A00DE6AE9 /* ChatAppApp.swift in Sources */,
+				CF632C17296871D3003A005D /* TextFiledInput.swift in Sources */,
 				CF43F9A8296305EF00271CA3 /* StorageManager.swift in Sources */,
 				CF632C0929683FFD003A005D /* TextMessageView.swift in Sources */,
 				CF632C0B29684053003A005D /* PDFMessageView.swift in Sources */,
@@ -608,6 +643,7 @@
 				CF07F47929582112007BDB4F /* LargeButton.swift in Sources */,
 				CF07F47D29582BE9007BDB4F /* User.swift in Sources */,
 				CF2D330F2961EA7300D286DE /* BottomSheet.swift in Sources */,
+				CF632C19296878D5003A005D /* CommonButton.swift in Sources */,
 				CF67171429594608001C53FE /* SenderTextMessageCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,13 +26,13 @@ struct LargeButtonStyle: ButtonStyle {
                     .stroke(currentForegroundColor, lineWidth: 1)
         )
            // .padding([.top, .bottom], 5)
-            .font(.customFont(.DMSansBold, 16))
+            .font(.customFont(.RalewayBold, 16))
     }
 }
 
 struct LargeButton: View {
     
-    private static let buttonHorizontalMargins: CGFloat = 20
+    private static let buttonHorizontalMargins: CGFloat = 0
     
     var backgroundColor: Color
     var foregroundColor: Color
