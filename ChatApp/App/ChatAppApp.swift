@@ -21,27 +21,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct ChatAppApp: App {
-//    let persistenceController = PersistenceController.shared
+    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @AppStorage("isDarkMode") private var isDarkMode = false
     
     
     var body: some Scene {
         WindowGroup {
-            
-            LoginView()
-            
-           // ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-//            MainTabView()
-            
-            
-//            NavigationView {
-                // ChatRoom()
-//            }
-              //  .preferredColorScheme(isDarkMode ? .dark : .light)
-            
-            
+            RootView()
+                .environmentObject(ViewRouter.shared)
+                .preferredColorScheme(isDarkMode ? .dark : .light)
         }
     }
 }

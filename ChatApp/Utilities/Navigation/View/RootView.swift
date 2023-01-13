@@ -9,30 +9,39 @@ import SwiftUI
 
 struct RootView: View {
     
-    @StateObject var router: ViewRouter
-     
-     var body: some View {
-       Group {
-           containedView(roots: router.currentRoot)
+    @EnvironmentObject var router: ViewRouter
+    @State var isAnimated = false
+    
+    var body: some View {
+        Group {
+            containedView(roots: router.currentRoot)
+                .id(UUID().uuidString)
+                .transition(.slide).animation(.linear(duration: 0.2), value: isAnimated)
+                .onAppear() {
+                    DispatchQueue.main.async {
+                        isAnimated = true
+                    }
+                }
         }
-     }
+    }
     
     func containedView(roots: Roots) -> AnyView {
         switch router.currentRoot {
-            case .initialScreen:
-                   return AnyView(MainTabView())
-                
-            case .signup:
-                   return AnyView(MainTabView())
-                
-            case .userTabs:
-                   return AnyView(MainTabView())
+        case .initialScreen:
+            return AnyView(MainTabView())
+        case .signup:
+            return AnyView(MainTabView())
+        case .signIn:
+            return AnyView(LoginView())
+        case .userTabs:
+            return AnyView(MainTabView())
         }
     }
 }
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView(router: ViewRouter.shared)
+        RootView()
+            .environmentObject(ViewRouter.shared)
     }
 }

@@ -59,11 +59,10 @@ struct LoginView: View {
                                             }
                                             .padding(.vertical,20)
                                             
-                                            LargeButton(title: "Sign In",
-                                                        backgroundColor: themeColor) {
-                                                                    print("Hello World")
-                                                                }
-                                                        .padding(.top,18)
+                                            LargeButton(title: "Sign In",backgroundColor: themeColor) {
+                                                loginRequest()
+                                               }
+                                              .padding(.top,18)
                                             
                                             Spacer()
                                          
@@ -101,10 +100,6 @@ struct LoginView: View {
                                        })
                                        
                                        
-                                       
-                                      
-                                       
-                                       
                                    }//:HStack
                                    
                                    VStack{
@@ -129,9 +124,24 @@ struct LoginView: View {
                        }//:GeometryReader
                    }//:VStack
                    
+            
+            //MARK: - ALERT
+            CustomAlert(isShowAlert: $vm.isShowAlert, alertTitle: vm.alertTitle, alertMessage:vm.alertMessage)
+            
                }//:ZStack
                .navigationBarHidden(true)
                .edgesIgnoringSafeArea(.all)
+    }
+    
+    
+    func loginRequest(){
+     //   startLoading()
+        vm.loginRequest { status in
+          //  stopLoading()
+            if status {
+                ViewRouter.shared.currentRoot =  .userTabs
+            }
+        }
     }
 }
 
@@ -140,3 +150,5 @@ struct LoginVIew_Previews: PreviewProvider {
         LoginView()
     }
 }
+//kavindu@gmail.com
+//12345678k

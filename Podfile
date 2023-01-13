@@ -17,8 +17,11 @@ target 'ChatApp' do
   
   pod 'SwiftDate'
   pod 'SDWebImageSwiftUI'
-
-  #pod 'Regex'
+  pod 'Alamofire'
+  #indicaror
+  pod 'RappleProgressHUD'
+  #connection checker
+  pod 'Connectivity'
 
 
 

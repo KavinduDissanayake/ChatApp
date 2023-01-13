@@ -4,7 +4,7 @@
 //
 //  Created by Kavindu Dissanayake on 2022-12-26.
 //
-
+import Alamofire
 import SwiftUI
 
 extension View {
@@ -35,5 +35,12 @@ extension View {
             placeholder().opacity(shouldShow ? 1 : 0)
             self
         }
+    }
+}
+
+
+extension Dictionary where Key == String, Value == Any {
+    func toHTTPHeaders() -> HTTPHeaders {
+        HTTPHeaders(mapValues { String(describing: $0) })
     }
 }

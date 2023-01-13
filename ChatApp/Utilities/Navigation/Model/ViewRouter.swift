@@ -11,18 +11,19 @@ import SwiftUI
 enum Roots {
     case initialScreen
     case signup
+    case signIn
     case userTabs
 }
 
 
 class ViewRouter: ObservableObject {
     
-    @Published var currentRoot: Roots =  .initialScreen
+    @Published var currentRoot: Roots =  .signIn
     
     static let shared = ViewRouter()
 
     fileprivate init() {
-        currentRoot = .userTabs
+       // currentRoot = .userTabs
     }
     
 }

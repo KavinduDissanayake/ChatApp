@@ -18,6 +18,10 @@
 		CF07F487295830BB007BDB4F /* ChatRoomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F486295830BB007BDB4F /* ChatRoomHeader.swift */; };
 		CF07F48929583443007BDB4F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F48829583443007BDB4F /* CustomButton.swift */; };
 		CF07F48B2958377D007BDB4F /* Constsnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F48A2958377D007BDB4F /* Constsnt.swift */; };
+		CF12E11329689A59009B677C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF12E11229689A59009B677C /* Reachability.swift */; };
+		CF12E11529689BB3009B677C /* AFWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF12E11429689BB3009B677C /* AFWrapper.swift */; };
+		CF12E11729689C22009B677C /* ApplicationServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF12E11629689C22009B677C /* ApplicationServiceProvider.swift */; };
+		CF12E11929689FD0009B677C /* UserDefalutManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF12E11829689FD0009B677C /* UserDefalutManger.swift */; };
 		CF2D3304295FFA5E00D286DE /* ChatDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D3303295FFA5E00D286DE /* ChatDataSource.swift */; };
 		CF2D330729600C5D00D286DE /* ReceiveMessageCellVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D330629600C5D00D286DE /* ReceiveMessageCellVM.swift */; };
 		CF2D3309296012C400D286DE /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2D3308296012C400D286DE /* CustomScrollView.swift */; };
@@ -83,6 +87,10 @@
 		CF07F486295830BB007BDB4F /* ChatRoomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomHeader.swift; sourceTree = "<group>"; };
 		CF07F48829583443007BDB4F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CF07F48A2958377D007BDB4F /* Constsnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constsnt.swift; sourceTree = "<group>"; };
+		CF12E11229689A59009B677C /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		CF12E11429689BB3009B677C /* AFWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFWrapper.swift; sourceTree = "<group>"; };
+		CF12E11629689C22009B677C /* ApplicationServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationServiceProvider.swift; sourceTree = "<group>"; };
+		CF12E11829689FD0009B677C /* UserDefalutManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefalutManger.swift; sourceTree = "<group>"; };
 		CF2D3303295FFA5E00D286DE /* ChatDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatDataSource.swift; sourceTree = "<group>"; };
 		CF2D330629600C5D00D286DE /* ReceiveMessageCellVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMessageCellVM.swift; sourceTree = "<group>"; };
 		CF2D3308296012C400D286DE /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
@@ -193,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				CF07F47B29582B4E007BDB4F /* Model */,
+				CF12E11429689BB3009B677C /* AFWrapper.swift */,
 			);
 			path = Repositry;
 			sourceTree = "<group>";
@@ -319,6 +328,9 @@
 				CF43F9A7296305EF00271CA3 /* StorageManager.swift */,
 				CF43F9A92963C5CF00271CA3 /* DatabaseManager.swift */,
 				CF632C1E296886F8003A005D /* Validators.swift */,
+				CF12E11229689A59009B677C /* Reachability.swift */,
+				CF12E11629689C22009B677C /* ApplicationServiceProvider.swift */,
+				CF12E11829689FD0009B677C /* UserDefalutManger.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -616,16 +628,19 @@
 				CF70E76C2958ABE400B70565 /* ChatRoomVM.swift in Sources */,
 				CF2D330729600C5D00D286DE /* ReceiveMessageCellVM.swift in Sources */,
 				CF671716295946CC001C53FE /* Extensions.swift in Sources */,
+				CF12E11329689A59009B677C /* Reachability.swift in Sources */,
 				CF43F9AA2963C5CF00271CA3 /* DatabaseManager.swift in Sources */,
 				CF635D982955AFC200B66D53 /* RootView.swift in Sources */,
 				CF632C1B2968830C003A005D /* TextFiledPassword.swift in Sources */,
 				CF67171F29596B85001C53FE /* BaseView.swift in Sources */,
 				CFC2A4BE29557CFA00DE6AE9 /* MainTabView.swift in Sources */,
+				CF12E11729689C22009B677C /* ApplicationServiceProvider.swift in Sources */,
 				CFC2A4AC2955774C00DE6AE9 /* Persistence.swift in Sources */,
 				CF2D3309296012C400D286DE /* CustomScrollView.swift in Sources */,
 				CF632C0D29684611003A005D /* LocationMessageView.swift in Sources */,
 				CF635D9E2955B88A00B66D53 /* ChatList.swift in Sources */,
 				CFC2A4AF2955774C00DE6AE9 /* ChatApp.xcdatamodeld in Sources */,
+				CF12E11929689FD0009B677C /* UserDefalutManger.swift in Sources */,
 				CF67171D29596898001C53FE /* CommonAlert.swift in Sources */,
 				CF67171A295964B7001C53FE /* Handlers.swift in Sources */,
 				CF70E76F2958AC0900B70565 /* BaseVM.swift in Sources */,
@@ -656,6 +671,7 @@
 				CF2D330F2961EA7300D286DE /* BottomSheet.swift in Sources */,
 				CF632C1D29688695003A005D /* LoginViewVM.swift in Sources */,
 				CF632C19296878D5003A005D /* CommonButton.swift in Sources */,
+				CF12E11529689BB3009B677C /* AFWrapper.swift in Sources */,
 				CF67171429594608001C53FE /* SenderTextMessageCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

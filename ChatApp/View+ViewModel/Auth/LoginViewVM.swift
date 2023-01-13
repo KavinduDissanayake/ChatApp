@@ -37,5 +37,43 @@ extension LoginViewVM {
         return true
     }
     
+}
+
+extension LoginViewVM {
+    
+
+    //MARK: - LOGIN FUNCATION
+    func loginRequest(completion: @escaping (_ status: Bool) -> ()) {
+        
+        if  !proceedWithSignIn() {
+            completion(false)
+            return
+        }
+        
+        // Check internet connection
+        guard Reachability.isInternetAvailable() else {
+            self.alertTitle = "Failed"
+            self.alertMessage = "Internet connection appears to be offline."
+            self.isShowAlert = true
+            completion(false)
+            return
+        }
+        
+        
+        
+        AFWrapper.sharedInstance.userLogin(email: emailText, password: passwordText) { userModel in
+           //save Local User
+            print(userModel)
+            completion(true)
+            return
+        } failure: { error in
+            self.alertTitle = "Failed"
+            self.alertMessage = error.localizedDescription
+            self.isShowAlert = true
+            completion(false)
+        }
+        
+    }
+    
     
 }

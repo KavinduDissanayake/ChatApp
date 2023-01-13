@@ -65,8 +65,6 @@ struct ProfileScreen: View {
 
                                 MenuItem(title: "Terms and conditions")
 
-                              
-
                                 MenuItem(title: "About us")
                                 
                                 MenuItem(title: "Logout ")
@@ -81,6 +79,7 @@ struct ProfileScreen: View {
                                             foregroundColor: themeColor) {
                                                         print("Hello World")
                                                     }
+                                            .padding(.horizontal, 16)
                                 
 //                                LargeButton(title: "Log out",
 //                                            backgroundColor: themeColor) {
