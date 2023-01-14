@@ -19,12 +19,12 @@ struct BottomoOption: View {
         ZStack {
            
             VStack(alignment:.leading,spacing: 0){
-                Text("Select your File Type ")
+                Text("Select your message Type ")
                     .font(.customFont(.RalewayBold, 15))
                     .padding(.leading,16)
                     .padding(.top,16)
                 
-                Text("In here you can selectthis type of file ")
+                Text("In here you can selecet this type of meessges ")
                     .font(.customFont(.RalewaySemiBold, 13))
                     .padding(.leading,16)
                     .padding(.top,5)

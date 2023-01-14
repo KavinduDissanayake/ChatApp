@@ -16,8 +16,6 @@ final class FirestoreDatabaseManager {
     
     private let database = Firestore.firestore()
     
-    
-    
     func getConversationID( senderId:String, receiverId :String)->String {
         return senderId < receiverId ?  "\(senderId)_\(receiverId)" : "\(receiverId)_\(senderId)"
     }
@@ -25,6 +23,7 @@ final class FirestoreDatabaseManager {
     var totalUnread = 0
     
     var chatDataSource =  ChatDataSource()
+    
 }
 // MARK: - Sending messages / conversations
 
@@ -32,7 +31,7 @@ extension FirestoreDatabaseManager {
     
     
     /// Gets all mmessages for a given conversation
-    public func getAllMessagesForConversation(senderId:String,receiverId :String, completion: @escaping (Result<[MessageSection], Error>) -> Void) {
+    public func getAllMessagesForConversation(senderId:String,receiverId :String, completion: @escaping (Result<ChatDataSource, Error>) -> Void) {
         
         let chatRoomDb = database.collection("chatroom")
         chatRoomDb
@@ -87,7 +86,7 @@ extension FirestoreDatabaseManager {
                 self.chatDataSource.addMessages(messages:messagesList)
                 
                 
-                completion(.success(self.chatDataSource.sections))
+                completion(.success(self.chatDataSource))
             }
         
     }

@@ -33,95 +33,50 @@ struct ChatRoom: View {
                 
                 ChatRoomHeader(title:"Sanduni")
                 
-                
-                
-                
-                
-//                ScrollView(.vertical, showsIndicators: false) {
-//                    ScrollViewReader { value in
-//                        LazyVStack(spacing: 0.5) {
-//
-//                            ForEach(Array(vm.sectionsList.enumerated()), id: \.offset) { index, section in
-//
-//                                Text(section.title ?? "")
-//                                    .font(.customFont(.DMSansBold, 14))
-//                                    .padding(8)
-//                                    .background(themeColor)
-//                                    .foregroundColor(whiteColor)
-//                                    .cornerRadius(5, corners: .allCorners)
-//
-//
-//                                ForEach(Array(( section.messages  ).enumerated()), id: \.offset) { index, message in
-//
-//                                    getMessage(message: message)
-//
-//
-//                                }//:ForEach
-//                                .onChange(of: vm.sectionsList) { _ in
-//
-//
-//                                    if  vm.sectionsList.count > 0 {
-//                                        withAnimation{
-//                                            value.scrollTo(bottomID)
-//                                        }
-//                                    }else{
-//                                        print("pass error 0")
-//                                    }
-//                                }
-//
-//
-//                            }
-//                            Rectangle()
-//                                .frame(height: 50, alignment: .center)
-//                                .foregroundColor(Color.clear)
-//                                .id(bottomID)
-//                            //.id(scrollToid)//padding from bottom
-//                            //  Scroll(reader: reader)
-//                        }
-//                    }
-//                }
-                
-                
-                                VStack {
-                
-                                    GeometryReader { geometry in
-                
-                                        //MARK:- CustomScrollView
-                                        CustomScrollView(scrollToEnd: true) {
-                
-                
-                                            LazyVStack {
-                
-                                                ForEach(Array(vm.sectionsList.enumerated()), id: \.offset) { index, section in
-                
-                                                    Text(section.title ?? "")
-                                                        .font(.customFont(.DMSansBold, 14))
-                                                        .padding(8)
-                                                        .background(themeColor)
-                                                        .foregroundColor(whiteColor)
-                                                        .cornerRadius(5, corners: .allCorners)
-                
-                
-                                                    ForEach(Array(( section.messages  ).enumerated()), id: \.offset) { index, message in
-                
-                                                        getMessage(message: message)
-                
-                
-                                                    }//:ForEach
-                
-                
-                                                }//:ForEach
-                                            }//:LazyVStack
-                
-                
-                                        }//:CustomScrollView
-                
-                
-                                    }//:GeometryReader
-                
+                VStack{
+                    ScrollViewReader { proxy in
+                        VStack{
+                            ScrollView(showsIndicators: false) {
+                                ForEach(Array(vm.sectionsList.enumerated()), id: \.offset) { index, section in
+                                    
+                                    Text(section.title ?? "")
+                                        .font(.customFont(.DMSansBold, 14))
+                                        .padding(8)
+                                        .background(themeColor)
+                                        .foregroundColor(whiteColor)
+                                        .cornerRadius(5, corners: .allCorners)
+                                    
+                                    ForEach(Array(( section.messages  ).enumerated()), id: \.offset) { index, message in
+                                        getMessage(message: message)
+                                    }
                                 }
-                                .background(  chatBackgroundColor)
-                                .padding(.bottom,50)
+                                
+                                
+                                
+                                HStack {
+                                    Spacer()
+                                    Rectangle()
+                                        .fill(Color.clear)
+                                        .frame(height: 30)
+                                        .id(bottomID)
+                                    Spacer()
+                                }//:HStack
+                                
+                            }
+                           
+                        }//:VStack
+                        .padding(.bottom,70)
+                        .onChange(of: vm.lastMessageId) { id in
+                            withAnimation {
+                                proxy.scrollTo(bottomID, anchor: .bottom)
+                            }
+                        }
+                        
+                    }
+                }
+                .background(chatBackgroundColor)
+                
+               
             }//:VStack
             
             VStack {
@@ -179,7 +134,6 @@ struct ChatRoom: View {
             }
             
             BottomSheet(isShowing:$showFilePickerAlert, content:
-                            
                             AnyView(
                                 BottomoOption(pdfTapCallback: {
                                     
@@ -202,6 +156,7 @@ struct ChatRoom: View {
             
         }//:ZStack
         .navigationBarHidden(true)
+      
         
     }
     
@@ -218,13 +173,13 @@ struct ChatRoom: View {
     
     
     func  getMessage(message:Message) -> AnyView{
-        if message.idFrom == vm.currentUser._id ?? "" {
+        if message.idFrom == "\(vm.currentUser.id ?? 0 )"{
             return AnyView(SenderTextMessageCellView(message:message))
         }else{
             return AnyView(ReceiveMessageCellView(message:message))
         }
     }
-  
+    
 }
 
 struct ChatRoom_Previews: PreviewProvider {

@@ -12,6 +12,7 @@ import Combine
 class ChatDataSource {
     var sections: [MessageSection] = []
     var allMessages: [Message] = []
+    var lastMessageId: String = ""
     
     public func addMessage(message:Message){
 
@@ -31,7 +32,11 @@ class ChatDataSource {
                     sections.append(newSection)
             }
         }
-
+        
+        // Getting the ID of the last message so we automatically scroll to it in ContentView
+        if let id = self.allMessages.last?.id {
+            self.lastMessageId = id
+        }
     }
 
     public func addMessages(messages:[Message]){

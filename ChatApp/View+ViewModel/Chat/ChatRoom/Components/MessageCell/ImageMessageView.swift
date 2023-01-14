@@ -16,8 +16,13 @@ struct ImageMessageView: View {
     var body: some View {
        
         VStack{
-            
-            WebImage(url: URL(string: "https://ui-avatars.com/api/?name=John+Doe"))
+            WebImage(url: URL(string: message.media?.sourceURL ?? "" ))
+                .placeholder(Image("Icon_placeholder"))
+                .resizable()
+                .scaledToFill()
+                .frame(width: 160)
+                .frame(height: 110)
+                .cornerRadius(8)
 
         }//:VStack
         .padding(5)
@@ -26,6 +31,7 @@ struct ImageMessageView: View {
         .cornerRadius(12)
         .frame(width: 180)
         .frame(height: 130)
+    
     }
 }
 

@@ -130,6 +130,7 @@ class ChatRoomVM: BaseVM {
     var firestore = Firestore.firestore()
     
     @Published  var sectionsList: [MessageSection] = []
+    @Published var lastMessageId: String = ""
 }
 
 
@@ -137,10 +138,11 @@ class ChatRoomVM: BaseVM {
 //load messages
 extension ChatRoomVM {
     func fetchData(completion: @escaping CompletionBoolHandler) {
-        FirestoreDatabaseManager.shared.getAllMessagesForConversation(senderId: currentUser._id ?? "", receiverId:  contactUser._id ?? "") { result in
+        FirestoreDatabaseManager.shared.getAllMessagesForConversation(senderId: "\(currentUser.id ?? 0)", receiverId:   "\(contactUser.id  ?? 0 )" ) { result in
             switch result {
-            case .success(let sectionsList):
-                self.sectionsList = sectionsList
+            case .success(let chatSoucrce):
+                self.sectionsList = chatSoucrce.sections
+                self.lastMessageId = chatSoucrce.lastMessageId
                 self.objectWillChange.send()
                 completion(true)
             case .failure(let error):
@@ -155,8 +157,8 @@ extension ChatRoomVM {
 extension ChatRoomVM {
     
     func chatMessage(completion: @escaping CompletionBoolHandler){
-        let message = Message(idFrom: currentUser._id ?? "", idTo: contactUser._id ?? "",message: textFiled, isSeen: false, type: .text)
-        FirestoreDatabaseManager.shared.createNewConversation(senderName: currentUser.firstName ?? "", senderId: currentUser._id ?? "",receiverName:contactUser.firstName ?? "", receiverId: contactUser._id ?? "", firstMessage: message) { succes,error in
+        let message = Message(idFrom:  "\(currentUser.id ?? 0)", idTo:"\(contactUser.id  ?? 0 )",message: textFiled, isSeen: false, type: .text)
+        FirestoreDatabaseManager.shared.createNewConversation(senderName: currentUser.name ?? "", senderId:  "\(currentUser.id ?? 0)",receiverName:contactUser.name ?? "", receiverId:"\(contactUser.id  ?? 0 )", firstMessage: message) { succes,error in
             if error != nil {
                 self.showAlert(error: error)
             }
@@ -176,8 +178,10 @@ extension ChatRoomVM {
     func uploadFile(fileUrl: URL,fileType:FileTypes,completion: @escaping CompletionBoolHandler){
         switch fileType {
         case .image:
+          
             let fileName = "photo_chat_" + UUID().uuidString.replacingOccurrences(of: " ", with: "-") + ".png"
-            StorageManager.shared.uploadMessagePhoto(with:  fileUrl.dataRepresentation, fileName: fileName) {  result in
+            
+            StorageManager.shared.uploadMessagePhoto(with:  fileUrl, fileName: fileName) {  result in
                 switch result {
                 case .success(let urlString):
                     self.chatMessageWithFile(fileUrl: urlString, fileType: .image) { status in
@@ -192,7 +196,7 @@ extension ChatRoomVM {
             break
         case .pdf:
             let fileName = "pdf_chat_" + UUID().uuidString.replacingOccurrences(of: " ", with: "-") + ".pdf"
-            StorageManager.shared.uploadMessagePDF(with:  fileUrl.dataRepresentation, fileName: fileName) {  result in
+            StorageManager.shared.uploadMessagePDF(with:  fileUrl, fileName: fileName) {  result in
                 switch result {
                 case .success(let urlString):
                     self.chatMessageWithFile(fileUrl: urlString, fileType: .pdf) { status in
@@ -212,9 +216,9 @@ extension ChatRoomVM {
     func chatMessageWithFile(fileUrl:String,fileType:MessageTypes,completion: @escaping CompletionBoolHandler){
         
         let media = Media(sourceURL:fileUrl)
-        let message = Message(idFrom: currentUser._id ?? "", idTo: contactUser._id ?? "",message: "@Attachment", isSeen: false, type: fileType,media: media)
+        let message = Message(idFrom:  "\(currentUser.id ?? 0)", idTo:  "\(contactUser.id ?? 0)",message: "@Attachment", isSeen: false, type: fileType,media: media)
         
-        FirestoreDatabaseManager.shared.createNewConversation(senderName: currentUser.firstName ?? "", senderId: currentUser._id ?? "",receiverName:contactUser.firstName ?? "", receiverId: contactUser._id ?? "", firstMessage: message) { succes,error in
+        FirestoreDatabaseManager.shared.createNewConversation(senderName: currentUser.name ?? "", senderId:  "\(currentUser.id ?? 0)",receiverName:contactUser.name ?? "", receiverId:  "\(contactUser.id ?? 0)", firstMessage: message) { succes,error in
             if error != nil {
                 self.showAlert(error: error)
             }

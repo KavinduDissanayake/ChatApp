@@ -32,7 +32,7 @@ class AFWrapper: NSObject {
                                   "device_token":  ""]
         
         AF.request("\(Constant.getBaseURL())/login",method: .post,parameters: parms,headers: headers)
-           // .validate(statusCode: 200..<300)
+            .validate(statusCode: 200..<300)
             .responseData { response in // note the change to responseData
                 switch response.result {
                 case .failure(let error):
@@ -65,11 +65,11 @@ class AFWrapper: NSObject {
 // MARK: - UserModelResponse
 struct UserModelResponse: Codable {
     let message: String?
-    let payload: Payload?
+    let payload: User?
 }
 
 // MARK: - Payload
-struct Payload: Codable {
+struct User: Codable {
     var id: Int?
     var name, email, twoFactorSecret, twoFactorRecoveryCodes: String?
     var dob, gender, address, createdAt: String?
@@ -79,22 +79,5 @@ struct Payload: Codable {
     var roles: String?
     var avatarURL: String?
     var accessToken: String?
-
-//    enum CodingKeys: String, CodingKey {
-//        case id, name, email
-//        case twoFactorSecret = "two_factor_secret"
-//        case twoFactorRecoveryCodes = "two_factor_recovery_codes"
-//        case dob, gender, address
-//        case createdAt = "created_at"
-//        case updatedAt = "updated_at"
-//        case phone
-//        case deviceToken = "device_token"
-//        case deviceID = "device_id"
-//        case deletedAt = "deleted_at"
-//        case lastSeen = "last_seen"
-//        case isOnline = "is_online"
-//        case roles
-//        case avatarURL = "avatar_url"
-//        case accessToken = "access_token"
-//    }
+    
 }

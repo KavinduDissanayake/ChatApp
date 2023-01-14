@@ -45,11 +45,11 @@ extension LoginViewVM {
     //MARK: - LOGIN FUNCATION
     func loginRequest(completion: @escaping (_ status: Bool) -> ()) {
         
-        if  !proceedWithSignIn() {
+        if !proceedWithSignIn() {
             completion(false)
             return
         }
-        
+
         // Check internet connection
         guard Reachability.isInternetAvailable() else {
             self.alertTitle = "Failed"
@@ -59,11 +59,10 @@ extension LoginViewVM {
             return
         }
         
-        
-        
-        AFWrapper.sharedInstance.userLogin(email: emailText, password: passwordText) { userModel in
+        AFWrapper.sharedInstance.userLogin(email: emailText, password: passwordText) { userResponse in
            //save Local User
-            print(userModel)
+            guard let userModel = userResponse.payload else { return }
+            PersistenceController.shared.saveUserData(with: userModel)
             completion(true)
             return
         } failure: { error in

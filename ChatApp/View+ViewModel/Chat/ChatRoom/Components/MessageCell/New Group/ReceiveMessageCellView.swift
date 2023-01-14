@@ -18,7 +18,7 @@ struct ReceiveMessageCellView: View {
     var body: some View {
         HStack(alignment:.top) {
             
-            WebImage(url: URL(string: vm.contactUser.avatarUrl ?? ""))
+            WebImage(url: URL(string: vm.contactUser.avatarURL ?? ""))
                 .onSuccess { image, data, cacheType in
                     DispatchQueue.main.async {
                       // if need impliment
@@ -50,11 +50,11 @@ struct ReceiveMessageCellView: View {
         switch bodyType {
             
         case .text:
-            return AnyView(TextMessageView(message: message))
+            return AnyView(TextMessageView(message: message,isSender: false))
         case .image:
-            return AnyView(LocationMessageView(message:message,isSender: false))
+            return AnyView(ImageMessageView(message: message,isSender: false))
         case .pdf:
-            return AnyView(PDFMessageView(message:message))
+            return AnyView(PDFMessageView(message:message,isSender: false))
         case .location:
             return AnyView(LocationMessageView(message:message,isSender: false))
 

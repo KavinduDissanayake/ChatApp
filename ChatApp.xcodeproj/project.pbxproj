@@ -12,7 +12,6 @@
 		CF07F4732958182E007BDB4F /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F4722958182E007BDB4F /* ProfileScreen.swift */; };
 		CF07F47729581FC3007BDB4F /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F47629581FC3007BDB4F /* MenuItem.swift */; };
 		CF07F47929582112007BDB4F /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F47829582112007BDB4F /* LargeButton.swift */; };
-		CF07F47D29582BE9007BDB4F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F47C29582BE9007BDB4F /* User.swift */; };
 		CF07F48029582C52007BDB4F /* DummyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F47F29582C52007BDB4F /* DummyModel.swift */; };
 		CF07F48429582D69007BDB4F /* ChatRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F48329582D69007BDB4F /* ChatRoom.swift */; };
 		CF07F487295830BB007BDB4F /* ChatRoomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F486295830BB007BDB4F /* ChatRoomHeader.swift */; };
@@ -62,8 +61,8 @@
 		CF70E76C2958ABE400B70565 /* ChatRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70E76B2958ABE400B70565 /* ChatRoomVM.swift */; };
 		CF70E76F2958AC0900B70565 /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70E76E2958AC0900B70565 /* BaseVM.swift */; };
 		CF73CBDC2956C49D005E5D5F /* launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF73CBDB2956C49D005E5D5F /* launchscreen.storyboard */; };
+		CFAB41372972801600FB00D4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB41362972801600FB00D4 /* MapView.swift */; };
 		CFC2A4A32955774A00DE6AE9 /* ChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4A22955774A00DE6AE9 /* ChatAppApp.swift */; };
-		CFC2A4A52955774A00DE6AE9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4A42955774A00DE6AE9 /* ContentView.swift */; };
 		CFC2A4A72955774C00DE6AE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2A4A62955774C00DE6AE9 /* Assets.xcassets */; };
 		CFC2A4AA2955774C00DE6AE9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2A4A92955774C00DE6AE9 /* Preview Assets.xcassets */; };
 		CFC2A4AC2955774C00DE6AE9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4AB2955774C00DE6AE9 /* Persistence.swift */; };
@@ -81,7 +80,6 @@
 		CF07F47429581CCB007BDB4F /* Raleway-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-SemiBold.ttf"; sourceTree = "<group>"; };
 		CF07F47629581FC3007BDB4F /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
 		CF07F47829582112007BDB4F /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
-		CF07F47C29582BE9007BDB4F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CF07F47F29582C52007BDB4F /* DummyModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyModel.swift; sourceTree = "<group>"; };
 		CF07F48329582D69007BDB4F /* ChatRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoom.swift; sourceTree = "<group>"; };
 		CF07F486295830BB007BDB4F /* ChatRoomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomHeader.swift; sourceTree = "<group>"; };
@@ -135,9 +133,9 @@
 		CF70E76B2958ABE400B70565 /* ChatRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomVM.swift; sourceTree = "<group>"; };
 		CF70E76E2958AC0900B70565 /* BaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
 		CF73CBDB2956C49D005E5D5F /* launchscreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = launchscreen.storyboard; sourceTree = "<group>"; };
+		CFAB41362972801600FB00D4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		CFC2A49F2955774A00DE6AE9 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2A4A22955774A00DE6AE9 /* ChatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppApp.swift; sourceTree = "<group>"; };
-		CFC2A4A42955774A00DE6AE9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CFC2A4A62955774C00DE6AE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CFC2A4A92955774C00DE6AE9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CFC2A4AB2955774C00DE6AE9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 		CF07F47B29582B4E007BDB4F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CF07F47C29582BE9007BDB4F /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -310,7 +307,6 @@
 			isa = PBXGroup;
 			children = (
 				CFC2A4A22955774A00DE6AE9 /* ChatAppApp.swift */,
-				CFC2A4A42955774A00DE6AE9 /* ContentView.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -387,6 +383,7 @@
 			children = (
 				CF07F48229582D55007BDB4F /* ChatRoom */,
 				CF07F48129582D49007BDB4F /* ChatList */,
+				CFAB41362972801600FB00D4 /* MapView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -652,12 +649,12 @@
 				CF07F48029582C52007BDB4F /* DummyModel.swift in Sources */,
 				CF433FC82956DCB000FFFB6D /* Font+Extensions.swift in Sources */,
 				CF632C1229686B83003A005D /* LoginVIew.swift in Sources */,
-				CFC2A4A52955774A00DE6AE9 /* ContentView.swift in Sources */,
 				CF2D33112961ECCE00D286DE /* BottomOption.swift in Sources */,
 				CFC2A4A32955774A00DE6AE9 /* ChatAppApp.swift in Sources */,
 				CF632C17296871D3003A005D /* TextFiledInput.swift in Sources */,
 				CF43F9A8296305EF00271CA3 /* StorageManager.swift in Sources */,
 				CF632C0929683FFD003A005D /* TextMessageView.swift in Sources */,
+				CFAB41372972801600FB00D4 /* MapView.swift in Sources */,
 				CF632C0B29684053003A005D /* PDFMessageView.swift in Sources */,
 				CF2D33132961F4DA00D286DE /* ButtonOutLineWithImage.swift in Sources */,
 				CF07F48929583443007BDB4F /* CustomButton.swift in Sources */,
@@ -667,7 +664,6 @@
 				CF07F48429582D69007BDB4F /* ChatRoom.swift in Sources */,
 				CF632C1F296886F8003A005D /* Validators.swift in Sources */,
 				CF07F47929582112007BDB4F /* LargeButton.swift in Sources */,
-				CF07F47D29582BE9007BDB4F /* User.swift in Sources */,
 				CF2D330F2961EA7300D286DE /* BottomSheet.swift in Sources */,
 				CF632C1D29688695003A005D /* LoginViewVM.swift in Sources */,
 				CF632C19296878D5003A005D /* CommonButton.swift in Sources */,

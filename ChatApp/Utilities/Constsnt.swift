@@ -33,7 +33,7 @@ struct Constant {
     static func getBaseURL() -> String {
         switch Constant.appEnvironment {
         case .development:
-            return "https://rathnaweera.silicontools.xyz/"
+            return "https://rathnaweera.silicontools.xyz/api/v1"
         case .staging:
             return ""
         case .production:

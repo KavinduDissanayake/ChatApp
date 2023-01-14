@@ -28,9 +28,10 @@ struct ChatAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            RootView()
-                .environmentObject(ViewRouter.shared)
-                .preferredColorScheme(isDarkMode ? .dark : .light)
+//            RootView()
+//                .environmentObject(ViewRouter.shared)
+//                .preferredColorScheme(isDarkMode ? .dark : .light)
+            ChatRoom()
         }
     }
 }

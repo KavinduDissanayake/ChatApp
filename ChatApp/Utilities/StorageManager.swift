@@ -52,9 +52,11 @@ final class StorageManager {
     }
 
     /// Upload image that will be sent in a conversation message
-    public func uploadMessagePhoto(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
+    public func uploadMessagePhoto(with data: URL, fileName: String, completion: @escaping UploadPictureCompletion) {
         
-        storage.child("message_images/\(fileName)").putData(data, metadata: nil, completion: { [weak self] metadata, error in
+
+        
+        storage.child("message_images/\(fileName)").putFile(from: data, metadata: nil, completion: { [weak self] metadata, error in
             guard error == nil else {
                 // failed
                 print("failed to upload data to firebase for picture")
@@ -62,12 +64,15 @@ final class StorageManager {
                 return
             }
 
+         
             self?.storage.child("message_images/\(fileName)").downloadURL(completion: { url, error in
                 guard let url = url else {
                     print("Failed to get download url")
                     completion(.failure(StorageErrors.failedToGetDownloadUrl))
                     return
                 }
+
+                print("The download url is: \(url)")
 
                 let urlString = url.absoluteString
                 print("download url returned: \(urlString)")
@@ -78,9 +83,9 @@ final class StorageManager {
 
     
     /// Upload pdf that will be sent in a conversation message
-    public func uploadMessagePDF(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
+    public func uploadMessagePDF(with data: URL, fileName: String, completion: @escaping UploadPictureCompletion) {
         
-        storage.child("message_pdf/\(fileName)").putData(data, metadata: nil, completion: { [weak self] metadata, error in
+        storage.child("message_pdf/\(fileName)").putFile(from: data, metadata: nil, completion: { [weak self] metadata, error in
             guard error == nil else {
                 // failed
                 print("failed to upload data to firebase for picture")

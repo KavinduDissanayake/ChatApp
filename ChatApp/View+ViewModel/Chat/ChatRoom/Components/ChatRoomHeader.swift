@@ -36,12 +36,7 @@ struct ChatRoomHeader: View {
                 CustomButton(iconName: "ic_call",btnTapCallback: {
                    
                 })
-                
-                
-              
             }//:ZStack
-            
-           
             .padding()
             
             

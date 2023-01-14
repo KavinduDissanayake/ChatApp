@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PDFMessageView: View {
     var message:Message
+    var isSender = true
     var body: some View {
        
         ZStack{

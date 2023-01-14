@@ -32,7 +32,7 @@ struct SenderTextMessageCellView: View {
         case .text:
             return AnyView(TextMessageView(message: message))
         case .image:
-            return AnyView(TextMessageView(message: message))
+            return AnyView(ImageMessageView(message: message))
         case .pdf:
             return AnyView(PDFMessageView(message:message))
         case .location:
