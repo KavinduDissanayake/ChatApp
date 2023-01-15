@@ -13,7 +13,9 @@ struct CustomAlert: View {
     var alertTitle:String
     var alertMessage:String
     var action: (() -> ())?
-    
+    var actionSecond: (() -> ())?
+    var alertButtonOneTitle:String = "Ok"
+    var alertButtonTwoTitle:String = "Cancel"
     var body: some View {
         ZStack {
             
@@ -59,7 +61,7 @@ struct CustomAlert: View {
                             isShowAlert.toggle()
                             action?()
                         } label: {
-                            Text("Ok")
+                            Text(alertButtonOneTitle)
                                 .font(.customFont(.RalewayBold, 16))
                                 .foregroundColor( Color(UIColor.label))
                                 .multilineTextAlignment(.center)
@@ -72,8 +74,9 @@ struct CustomAlert: View {
                         // right button (default)
                         Button {
                             isShowAlert.toggle()
+                            actionSecond?()
                         } label: {
-                            Text("Cancel")
+                            Text(alertButtonTwoTitle)
                                 .font(.customFont(.RalewayBold, 16))
                                 .foregroundColor(redColor)
                                 .multilineTextAlignment(.center)

@@ -27,6 +27,7 @@ extension ApplicationServiceProvider {
             "device_id": ASP.shared.deviceId,
             "device_type": ASP.shared.deviceType,
             "device_token": "",
+            "authorization": PersistenceController.shared.loadUserData()?.accessToken ?? "",
             "x-api-key":123456789
         ]
     }

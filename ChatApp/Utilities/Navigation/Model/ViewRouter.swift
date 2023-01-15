@@ -23,7 +23,11 @@ class ViewRouter: ObservableObject {
     static let shared = ViewRouter()
 
     fileprivate init() {
-       // currentRoot = .userTabs
+        
+        if PersistenceController.shared.loadUserData()?.accessToken != nil {
+            currentRoot = .userTabs
+        }
+      
     }
     
 }

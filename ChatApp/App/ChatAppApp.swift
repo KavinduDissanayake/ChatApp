@@ -28,14 +28,14 @@ struct ChatAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            RootView()
-//                .environmentObject(ViewRouter.shared)
-//                .preferredColorScheme(isDarkMode ? .dark : .light)
-            ChatRoom()
+            RootView()
+                .environmentObject(ViewRouter.shared)
+                .preferredColorScheme(isDarkMode ? .dark : .light)
+           // ProfileScreen()
            // LocationMessageView(message:dumyMessage,isSender: false)
 
-            
-//            NewLocationPicker()
+         //   ChatRoom()
+       //    NewLocationPicker()
         }
     }
 }

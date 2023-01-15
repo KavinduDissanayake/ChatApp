@@ -61,9 +61,17 @@ extension LoginViewVM {
         
         AFWrapper.sharedInstance.userLogin(email: emailText, password: passwordText) { userResponse in
            //save Local User
-            guard let userModel = userResponse.payload else { return }
-            PersistenceController.shared.saveUserData(with: userModel)
-            completion(true)
+            if let userModel =  userResponse.payload  {
+                PersistenceController.shared.saveUserData(with: userModel)
+                completion(true)
+            }else{
+                self.alertTitle = "Failed"
+                self.alertMessage = userResponse.message ?? ""
+                self.isShowAlert = true
+                completion(false)
+            }
+            
+          
             return
         } failure: { error in
             self.alertTitle = "Failed"

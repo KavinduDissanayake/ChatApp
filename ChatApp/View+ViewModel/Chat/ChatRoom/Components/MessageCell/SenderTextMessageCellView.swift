@@ -16,14 +16,11 @@ struct SenderTextMessageCellView: View {
 
             VStack(alignment:.trailing) {
                 messageView(message: message, bodyType: message.type)
-
                 Text(message.getMessageTime())
                     .font(.customFont(.DMSansRegular, 12))
             }
             
-            
-          
-        }//:HStack
+         }//:HStack
         .padding(.horizontal,16)
     }
     

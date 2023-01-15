@@ -95,4 +95,19 @@ extension PersistenceController {
             print("Error: \(error)")
         }
     }
+    
+    func loadUserData() -> LocalUserData? {
+        let mainContext = PersistenceController.shared.mainContext
+        let fetchRequest: NSFetchRequest<LocalUserData> = LocalUserData.fetchRequest()
+        
+        do {
+            let result = try mainContext.fetch(fetchRequest).first
+            return result
+        }
+        catch {
+            debugPrint(error)
+        }
+        
+        return nil
+    }
 }

@@ -66,6 +66,7 @@
 		CFAB416629739B6C00FB00D4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB416129739B6C00FB00D4 /* VisualEffectView.swift */; };
 		CFAB41682973AF0800FB00D4 /* NewLocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB41672973AF0800FB00D4 /* NewLocationPicker.swift */; };
 		CFAB416A2973B76300FB00D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB41692973B76300FB00D4 /* LocationManager.swift */; };
+		CFAB416D2973F12B00FB00D4 /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB416C2973F12B00FB00D4 /* ProfileVM.swift */; };
 		CFC2A4A32955774A00DE6AE9 /* ChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4A22955774A00DE6AE9 /* ChatAppApp.swift */; };
 		CFC2A4A72955774C00DE6AE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2A4A62955774C00DE6AE9 /* Assets.xcassets */; };
 		CFC2A4AA2955774C00DE6AE9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2A4A92955774C00DE6AE9 /* Preview Assets.xcassets */; };
@@ -142,6 +143,7 @@
 		CFAB416129739B6C00FB00D4 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		CFAB41672973AF0800FB00D4 /* NewLocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationPicker.swift; sourceTree = "<group>"; };
 		CFAB41692973B76300FB00D4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		CFAB416C2973F12B00FB00D4 /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
 		CFC2A49F2955774A00DE6AE9 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2A4A22955774A00DE6AE9 /* ChatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppApp.swift; sourceTree = "<group>"; };
 		CFC2A4A62955774C00DE6AE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				CF07F47529581FA9007BDB4F /* Components */,
 				CF07F4722958182E007BDB4F /* ProfileScreen.swift */,
+				CFAB416C2973F12B00FB00D4 /* ProfileVM.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -671,6 +674,7 @@
 				CF07F48B2958377D007BDB4F /* Constsnt.swift in Sources */,
 				CF2D330D2961E24900D286DE /* CustomAlert.swift in Sources */,
 				CF07F48029582C52007BDB4F /* DummyModel.swift in Sources */,
+				CFAB416D2973F12B00FB00D4 /* ProfileVM.swift in Sources */,
 				CF433FC82956DCB000FFFB6D /* Font+Extensions.swift in Sources */,
 				CFAB416329739B6C00FB00D4 /* MapView.swift in Sources */,
 				CF632C1229686B83003A005D /* LoginVIew.swift in Sources */,

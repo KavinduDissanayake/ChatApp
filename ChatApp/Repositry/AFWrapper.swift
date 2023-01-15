@@ -32,7 +32,7 @@ class AFWrapper: NSObject {
                                   "device_token":  ""]
         
         AF.request("\(Constant.getBaseURL())/login",method: .post,parameters: parms,headers: headers)
-            .validate(statusCode: 200..<300)
+            //.validate(statusCode: 200..<300)
             .responseData { response in // note the change to responseData
                 switch response.result {
                 case .failure(let error):
@@ -58,6 +58,46 @@ class AFWrapper: NSObject {
         
        
     }
+    
+    
+    
+    func userProfileGet(success:@escaping (UserModelResponse) -> Void, failure:@escaping (Error) -> Void){
+        var headers: HTTPHeaders = [ ]
+        
+        let stringDictionary = ASP.shared.getInitialAuthParameters().mapValues { String(describing: $0) }
+        
+        for (key, value) in stringDictionary {
+            headers.add(name: key, value: value)
+        }
+        
+        
+        AF.request("\(Constant.getBaseURL())/profile",method: .get,headers: headers)
+          //  .validate(statusCode: 200..<300)
+            .responseData { response in // note the change to responseData
+                switch response.result {
+                case .failure(let error):
+                    print(error)
+                    failure(error)
+                case .success(let data):
+                    print(data)
+                    
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+                        let result = try decoder.decode(UserModelResponse.self, from: data)
+                        print(result)
+                         success(result)
+                    } catch {
+                        print(error)
+                        failure(error)
+                    }
+                }
+                    
+                
+            }
+        
+    }
+    
     
     
     
