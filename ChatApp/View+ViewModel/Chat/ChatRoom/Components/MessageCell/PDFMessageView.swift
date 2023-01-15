@@ -4,15 +4,41 @@
 //
 //  Created by Kavindu Dissanayake on 2023-01-06.
 //
-
+import WebKit
 import SwiftUI
+
+
+struct CustomWKWebView: UIViewRepresentable {
+    
+    @Binding var urlString: String
+        
+    func makeUIView(context: Context) -> WKWebView  {
+        let webView = WKWebView()
+        return webView
+    }
+    
+    func updateUIView(_ uiView: WKWebView, context: Context) {
+        
+        if let url = URL(string: self.urlString) {
+            uiView.load(URLRequest(url: url))
+        }
+    }
+}
+
+
 
 struct PDFMessageView: View {
     var message:Message
     var isSender = true
+    
+    @State var showViwer : Bool = false
+    
+    
+    
     var body: some View {
        
         ZStack{
+            
             VStack {
                 Image("ic_pdf_view")
                     .resizable()
@@ -35,10 +61,43 @@ struct PDFMessageView: View {
             .padding(.trailing,5)
             .padding(.top,40)
             
+            
+            Text("")
+                .sheet(isPresented: $showViwer) {
+            
+                    ZStack {
+                        
+                        CustomWKWebView(urlString:.constant(message.media?.sourceURL ?? ""))
+                            .edgesIgnoringSafeArea(.vertical)
+                        
+                        VStack {
+                            HStack {
+                                VStack{
+                                    CustomButton(iconName: "ic_close",btnTapCallback: {
+                                        showViwer.toggle()
+                                    },iconFillColor:whiteColor)
+                                    .padding(.all,4)
+                                }
+                                .background(themeColor)
+                                .cornerRadius(5)
+                                .padding(.leading,10)
+                                .padding(.top,10)
+                              
+                                Spacer()
+                            }//:HStack
+                            
+                            Spacer()
+                        }//:VStack
+                    }
+            }
+            
         }//:VStack
         .background(Color("#e2574c").opacity(0.3))
         .frame(width:70,height: 80)
         .cornerRadius(12)
+        .onTapGesture {
+            showViwer.toggle()
+        }
     }
 }
 

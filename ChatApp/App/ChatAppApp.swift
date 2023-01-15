@@ -32,6 +32,10 @@ struct ChatAppApp: App {
 //                .environmentObject(ViewRouter.shared)
 //                .preferredColorScheme(isDarkMode ? .dark : .light)
             ChatRoom()
+           // LocationMessageView(message:dumyMessage,isSender: false)
+
+            
+//            NewLocationPicker()
         }
     }
 }

@@ -13,6 +13,7 @@ struct BottomoOption: View {
 
     var pdfTapCallback:()->()
     var imageTapCallback:()->()
+    var locationTapCallback:()->()
     var cancelTapCallback:()->()
     
     var body: some View {
@@ -41,12 +42,18 @@ struct BottomoOption: View {
                    
                 }
                 
+                ButtonOutLineWithImage(imageName: "ic_location",title:"Select your Location") {
+                    locationTapCallback()
+                   
+                }
+                
                 
                 LargeButton(title: "Cancel",
                             backgroundColor: redColor) {
                     cancelTapCallback()
                                     }
                             .padding(.top,15)
+                            .padding(.horizontal,16)
 
           
             }//:VStack
@@ -57,6 +64,6 @@ struct BottomoOption: View {
 
 struct BottomOpetions_Previews: PreviewProvider {
     static var previews: some View {
-        BottomoOption(pdfTapCallback: {}, imageTapCallback: {}, cancelTapCallback: {})
+        BottomoOption(pdfTapCallback: {}, imageTapCallback: {}, locationTapCallback: {}, cancelTapCallback: {})
     }
 }

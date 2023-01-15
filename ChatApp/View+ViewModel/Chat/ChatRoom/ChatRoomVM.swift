@@ -156,6 +156,12 @@ extension ChatRoomVM {
 //text message
 extension ChatRoomVM {
     
+    func cleanText(){
+        textFiled = ""
+        
+    }
+    
+    
     func chatMessage(completion: @escaping CompletionBoolHandler){
         let message = Message(idFrom:  "\(currentUser.id ?? 0)", idTo:"\(contactUser.id  ?? 0 )",message: textFiled, isSeen: false, type: .text)
         FirestoreDatabaseManager.shared.createNewConversation(senderName: currentUser.name ?? "", senderId:  "\(currentUser.id ?? 0)",receiverName:contactUser.name ?? "", receiverId:"\(contactUser.id  ?? 0 )", firstMessage: message) { succes,error in
@@ -227,6 +233,26 @@ extension ChatRoomVM {
         }
     }
 }
+
+
+//location message
+extension ChatRoomVM {
+    
+    func chatMessageWithLocation(location: CLLocationCoordinate2D,completion: @escaping CompletionBoolHandler){
+        
+        let location = Location(locationName: "", latitude: "\(location.latitude)", longitude: "\(location.longitude)")
+        let message = Message(idFrom:  "\(currentUser.id ?? 0)", idTo:  "\(contactUser.id ?? 0)",message: "@Location", isSeen: false, type: .location,location: location)
+        
+        FirestoreDatabaseManager.shared.createNewConversation(senderName: currentUser.name ?? "", senderId:  "\(currentUser.id ?? 0)",receiverName:contactUser.name ?? "", receiverId:  "\(contactUser.id ?? 0)", firstMessage: message) { succes,error in
+            if error != nil {
+                self.showAlert(error: error)
+            }
+            print("Status \(succes)")
+            completion(succes)
+        }
+    }
+}
+
 
 
 

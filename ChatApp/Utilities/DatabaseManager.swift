@@ -73,8 +73,12 @@ extension FirestoreDatabaseManager {
                         return Message(idFrom:idFrom ?? "",message: message ?? "" ,type: messageType ?? .text, time: Int(date.toMillis()),media: mediaModel)
                         
                     case .location:
+                        let location =  data["location"] as? [String:AnyObject]
+                        let lat = location?["latitude"] as? String
+                        let lon = location?["longitude"] as? String
+                        let locationModel = Location(locationName: "", latitude:lat ?? "", longitude: lon ?? "" )
                         
-                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,type: messageType ?? .text, time: Int(date.toMillis()))
+                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,type: messageType ?? .text, time: Int(date.toMillis()),location: locationModel)
                         
                     case .none:
                         return Message(idFrom:idFrom ?? "",message: "Unwon",type: messageType ?? .text, time: Int(date.toMillis()))

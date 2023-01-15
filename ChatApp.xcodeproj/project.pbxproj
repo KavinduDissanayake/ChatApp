@@ -61,7 +61,11 @@
 		CF70E76C2958ABE400B70565 /* ChatRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70E76B2958ABE400B70565 /* ChatRoomVM.swift */; };
 		CF70E76F2958AC0900B70565 /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70E76E2958AC0900B70565 /* BaseVM.swift */; };
 		CF73CBDC2956C49D005E5D5F /* launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF73CBDB2956C49D005E5D5F /* launchscreen.storyboard */; };
-		CFAB41372972801600FB00D4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB41362972801600FB00D4 /* MapView.swift */; };
+		CFAB416329739B6C00FB00D4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB415E29739B6B00FB00D4 /* MapView.swift */; };
+		CFAB416429739B6C00FB00D4 /* LocalizedStringKey+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB415F29739B6B00FB00D4 /* LocalizedStringKey+toString.swift */; };
+		CFAB416629739B6C00FB00D4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB416129739B6C00FB00D4 /* VisualEffectView.swift */; };
+		CFAB41682973AF0800FB00D4 /* NewLocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB41672973AF0800FB00D4 /* NewLocationPicker.swift */; };
+		CFAB416A2973B76300FB00D4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB41692973B76300FB00D4 /* LocationManager.swift */; };
 		CFC2A4A32955774A00DE6AE9 /* ChatAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4A22955774A00DE6AE9 /* ChatAppApp.swift */; };
 		CFC2A4A72955774C00DE6AE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2A4A62955774C00DE6AE9 /* Assets.xcassets */; };
 		CFC2A4AA2955774C00DE6AE9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2A4A92955774C00DE6AE9 /* Preview Assets.xcassets */; };
@@ -133,7 +137,11 @@
 		CF70E76B2958ABE400B70565 /* ChatRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomVM.swift; sourceTree = "<group>"; };
 		CF70E76E2958AC0900B70565 /* BaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
 		CF73CBDB2956C49D005E5D5F /* launchscreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = launchscreen.storyboard; sourceTree = "<group>"; };
-		CFAB41362972801600FB00D4 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		CFAB415E29739B6B00FB00D4 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		CFAB415F29739B6B00FB00D4 /* LocalizedStringKey+toString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+toString.swift"; sourceTree = "<group>"; };
+		CFAB416129739B6C00FB00D4 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		CFAB41672973AF0800FB00D4 /* NewLocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewLocationPicker.swift; sourceTree = "<group>"; };
+		CFAB41692973B76300FB00D4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		CFC2A49F2955774A00DE6AE9 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC2A4A22955774A00DE6AE9 /* ChatAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatAppApp.swift; sourceTree = "<group>"; };
 		CFC2A4A62955774C00DE6AE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -359,6 +367,7 @@
 		CF635D9A2955B85300B66D53 /* View+ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				CFAB415C29739B5C00FB00D4 /* LocationPicker */,
 				CF632C1029685E48003A005D /* Auth */,
 				CF67171B29596889001C53FE /* Shared */,
 				CF07F47129581806007BDB4F /* Profile */,
@@ -383,7 +392,6 @@
 			children = (
 				CF07F48229582D55007BDB4F /* ChatRoom */,
 				CF07F48129582D49007BDB4F /* ChatList */,
-				CFAB41362972801600FB00D4 /* MapView.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -430,6 +438,18 @@
 				CF67171E29596B85001C53FE /* BaseView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		CFAB415C29739B5C00FB00D4 /* LocationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				CFAB415F29739B6B00FB00D4 /* LocalizedStringKey+toString.swift */,
+				CFAB415E29739B6B00FB00D4 /* MapView.swift */,
+				CFAB416129739B6C00FB00D4 /* VisualEffectView.swift */,
+				CFAB41672973AF0800FB00D4 /* NewLocationPicker.swift */,
+				CFAB41692973B76300FB00D4 /* LocationManager.swift */,
+			);
+			path = LocationPicker;
 			sourceTree = "<group>";
 		};
 		CFC2A4962955774A00DE6AE9 = {
@@ -613,6 +633,7 @@
 			files = (
 				CF573CDF2958817200A263B1 /* MessageInput.swift in Sources */,
 				CF07F47729581FC3007BDB4F /* MenuItem.swift in Sources */,
+				CFAB416629739B6C00FB00D4 /* VisualEffectView.swift in Sources */,
 				CF632C1529686F1B003A005D /* SocialLoginButton.swift in Sources */,
 				CF2D3304295FFA5E00D286DE /* ChatDataSource.swift in Sources */,
 				CF635D962955AEF700B66D53 /* ViewRouter.swift in Sources */,
@@ -622,6 +643,7 @@
 				CFC2A4BA29557C6D00DE6AE9 /* TabItemData.swift in Sources */,
 				CFC2A4BC29557C8A00DE6AE9 /* TabItemView.swift in Sources */,
 				CFC2A4B629557A3A00DE6AE9 /* HomePage.swift in Sources */,
+				CFAB41682973AF0800FB00D4 /* NewLocationPicker.swift in Sources */,
 				CF70E76C2958ABE400B70565 /* ChatRoomVM.swift in Sources */,
 				CF2D330729600C5D00D286DE /* ReceiveMessageCellVM.swift in Sources */,
 				CF671716295946CC001C53FE /* Extensions.swift in Sources */,
@@ -629,6 +651,7 @@
 				CF43F9AA2963C5CF00271CA3 /* DatabaseManager.swift in Sources */,
 				CF635D982955AFC200B66D53 /* RootView.swift in Sources */,
 				CF632C1B2968830C003A005D /* TextFiledPassword.swift in Sources */,
+				CFAB416429739B6C00FB00D4 /* LocalizedStringKey+toString.swift in Sources */,
 				CF67171F29596B85001C53FE /* BaseView.swift in Sources */,
 				CFC2A4BE29557CFA00DE6AE9 /* MainTabView.swift in Sources */,
 				CF12E11729689C22009B677C /* ApplicationServiceProvider.swift in Sources */,
@@ -643,18 +666,19 @@
 				CF70E76F2958AC0900B70565 /* BaseVM.swift in Sources */,
 				CF433FC62956DB1100FFFB6D /* ChatUserView.swift in Sources */,
 				CF433FCC2956E30900FFFB6D /* HeaderView.swift in Sources */,
+				CFAB416A2973B76300FB00D4 /* LocationManager.swift in Sources */,
 				CF07F487295830BB007BDB4F /* ChatRoomHeader.swift in Sources */,
 				CF07F48B2958377D007BDB4F /* Constsnt.swift in Sources */,
 				CF2D330D2961E24900D286DE /* CustomAlert.swift in Sources */,
 				CF07F48029582C52007BDB4F /* DummyModel.swift in Sources */,
 				CF433FC82956DCB000FFFB6D /* Font+Extensions.swift in Sources */,
+				CFAB416329739B6C00FB00D4 /* MapView.swift in Sources */,
 				CF632C1229686B83003A005D /* LoginVIew.swift in Sources */,
 				CF2D33112961ECCE00D286DE /* BottomOption.swift in Sources */,
 				CFC2A4A32955774A00DE6AE9 /* ChatAppApp.swift in Sources */,
 				CF632C17296871D3003A005D /* TextFiledInput.swift in Sources */,
 				CF43F9A8296305EF00271CA3 /* StorageManager.swift in Sources */,
 				CF632C0929683FFD003A005D /* TextMessageView.swift in Sources */,
-				CFAB41372972801600FB00D4 /* MapView.swift in Sources */,
 				CF632C0B29684053003A005D /* PDFMessageView.swift in Sources */,
 				CF2D33132961F4DA00D286DE /* ButtonOutLineWithImage.swift in Sources */,
 				CF07F48929583443007BDB4F /* CustomButton.swift in Sources */,
@@ -725,7 +749,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -779,7 +803,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -798,6 +822,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChatApp/Preview Content\"";
+				DEVELOPMENT_TEAM = NPXX324A2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChatApp/Info.plist;
@@ -828,6 +853,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ChatApp/Preview Content\"";
+				DEVELOPMENT_TEAM = NPXX324A2L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ChatApp/Info.plist;

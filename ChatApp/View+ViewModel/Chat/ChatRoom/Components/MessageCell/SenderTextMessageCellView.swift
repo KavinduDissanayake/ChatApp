@@ -17,7 +17,7 @@ struct SenderTextMessageCellView: View {
             VStack(alignment:.trailing) {
                 messageView(message: message, bodyType: message.type)
 
-                Text("12:00 PM")
+                Text(message.getMessageTime())
                     .font(.customFont(.DMSansRegular, 12))
             }
             
@@ -36,7 +36,7 @@ struct SenderTextMessageCellView: View {
         case .pdf:
             return AnyView(PDFMessageView(message:message))
         case .location:
-            return AnyView(LocationMessageView(message:message,isSender: false))
+            return AnyView(LocationMessageView(message:message))
             
         }
         

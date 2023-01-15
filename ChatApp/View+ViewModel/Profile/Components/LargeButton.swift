@@ -23,7 +23,7 @@ struct LargeButtonStyle: ButtonStyle {
             .cornerRadius(6)
             .overlay(
                 RoundedRectangle(cornerRadius: 6)
-                    .stroke(currentForegroundColor, lineWidth: 1)
+                    .stroke(backgroundColor, lineWidth: 1)
         )
            // .padding([.top, .bottom], 5)
             .font(.customFont(.RalewayBold, 16))

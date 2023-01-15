@@ -4,7 +4,7 @@
 //
 //  Created by Kavindu Dissanayake on 2022-12-25.
 //
-
+import MapKit
 import SwiftUI
 import UniformTypeIdentifiers
 
@@ -18,6 +18,7 @@ struct ChatRoom: View {
     
     @State private var showFilePicker = false
     @State private var showImagePicker = false
+    @State private var showLocaionPicker = false
     
     @State var activeUIType:UTType = .image
     
@@ -133,10 +134,13 @@ struct ChatRoom: View {
                 
             }
             
+        
+            
+            
+            
             BottomSheet(isShowing:$showFilePickerAlert, content:
                             AnyView(
                                 BottomoOption(pdfTapCallback: {
-                                    
                                     activeUIType = .pdf
                                     showFilePickerAlert.toggle()
                                     showFilePicker.toggle()
@@ -145,7 +149,10 @@ struct ChatRoom: View {
                                     
                                     showImagePicker.toggle()
                                     showFilePickerAlert.toggle()
+                                }, locationTapCallback: {
                                     
+                                    showLocaionPicker = true
+                                    showFilePickerAlert.toggle()
                                     
                                 }, cancelTapCallback: {
                                     
@@ -154,10 +161,26 @@ struct ChatRoom: View {
                             )
             )
             
+            
+           
+            NewLocationPicker(isShowPicker: $showLocaionPicker){ location in
+                self.sendLocation(location: location)
+            }
+
+           
         }//:ZStack
         .navigationBarHidden(true)
       
         
+    }
+    
+    func sendLocation(location:CLLocationCoordinate2D?){
+        if let location = location {
+            startLoading()
+            vm.chatMessageWithLocation(location: location){ status in
+                stopLoading()
+            }
+        }
     }
     
     
@@ -166,7 +189,7 @@ struct ChatRoom: View {
         vm.chatMessage(){ status in
             stopLoading()
             if status {
-                
+                vm.cleanText()
             }
         }
     }
