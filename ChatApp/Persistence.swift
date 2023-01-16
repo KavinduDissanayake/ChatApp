@@ -110,4 +110,12 @@ extension PersistenceController {
         
         return nil
     }
+    
+    func loadLoclUserType()->User{
+        
+      let localUser = loadUserData()
+      
+      return User(id:Int(localUser?.id ?? 0) ,name: localUser?.name ,email:  localUser?.email ?? "", gender: localUser?.gender ?? "", address:  localUser?.address ?? "", phone:  localUser?.phone ?? "")
+    }
 }
+

@@ -69,32 +69,16 @@ class AFWrapper: NSObject {
             headers.add(name: key, value: value)
         }
         
-        
         AF.request("\(Constant.getBaseURL())/profile",method: .get,headers: headers)
-          //  .validate(statusCode: 200..<300)
-            .responseData { response in // note the change to responseData
+            .responseDecodable(of: UserModelResponse.self) { (response) in
                 switch response.result {
+                case .success(let userModelResponse):
+                    success(userModelResponse)
                 case .failure(let error):
                     print(error)
                     failure(error)
-                case .success(let data):
-                    print(data)
-                    
-                    do {
-                        let decoder = JSONDecoder()
-                        decoder.keyDecodingStrategy = .convertFromSnakeCase
-                        let result = try decoder.decode(UserModelResponse.self, from: data)
-                        print(result)
-                         success(result)
-                    } catch {
-                        print(error)
-                        failure(error)
-                    }
                 }
-                    
-                
             }
-        
     }
     
     

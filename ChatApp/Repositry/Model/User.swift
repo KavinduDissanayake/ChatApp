@@ -40,4 +40,23 @@ struct User: Codable {
         self.avatarURL = avatarURL
         self.accessToken = accessToken
     }
+    
+    enum CodingKeys: String, CodingKey {
+           case id, name, email
+           case twoFactorSecret = "two_factor_secret"
+           case twoFactorRecoveryCodes = "two_factor_recovery_codes"
+           case dob, gender, address
+           case createdAt = "created_at"
+           case updatedAt = "updated_at"
+           case phone
+           case deviceToken = "device_token"
+           case deviceID = "device_id"
+           case deletedAt = "deleted_at"
+           case lastSeen = "last_seen"
+           case isOnline = "is_online"
+           case roles
+           case avatarURL = "avatar_url"
+           case accessToken = "access_token"
+       }
+    
 }

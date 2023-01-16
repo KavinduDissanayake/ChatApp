@@ -70,7 +70,7 @@ struct MessageInput: View {
         .padding()
         .cornerRadius(8)
         .padding(.horizontal, 8)
-        .background(cardColor)
+        .background(backgroundColor)
     }
 }
 

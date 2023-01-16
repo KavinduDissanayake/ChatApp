@@ -10,8 +10,6 @@ struct ChatList: View {
     
     //MARK: - PROPERITY
     @StateObject var vm = ChatListVM()
-    
-    
     @State var isActiveChatRoom = false
     
     var body: some View {
@@ -34,24 +32,29 @@ struct ChatList: View {
                 
                 GeometryReader { geometry in
                     ScrollView(.vertical , showsIndicators: false) {
-                        VStack(alignment: .center, spacing: 20) {
+                        VStack(alignment: .center, spacing: 0) {
                             
                             ForEach(Array(vm.chatUserList.enumerated()), id: \.offset) { index, chatUser in
                                 
-                                ChatUserView(chatUser:chatUser){
+                                ChatUserView(chatUser:chatUser){ selectedUser in
                                     vm.contactUserId = chatUser.connection ?? ""
-                                    isActiveChatRoom.toggle()
+                                    if let userModel = selectedUser {
+                                        vm.selectedUserModel = userModel
+                                        isActiveChatRoom.toggle()
+                                    }
+                                 
                                 }
                                 
                             }
                            
                             
+                           
                             Spacer()
-                            
                            
                             
                         }//:VStack
                         .frame(minHeight: geometry.size.height)
+                        .padding(.bottom,80)
                     }//:ScrollView
                     .frame(width: geometry.size.width)
                 }//:GeometryReader
@@ -69,7 +72,7 @@ struct ChatList: View {
             
             
             NavigationLink(destination:
-                            ChatRoom(contactUserId:vm.contactUserId)
+                            ChatRoom(vm:ChatRoomVM(contactUser: vm.selectedUserModel ?? dummyUser2))
                            , isActive: $isActiveChatRoom){}
           
            

@@ -131,8 +131,12 @@ class ChatRoomVM: BaseVM {
     
     @Published  var sectionsList: [MessageSection] = []
     @Published var lastMessageId: String = ""
+    
+    init(contactUser: User){
+        self.contactUser = contactUser
+        self.currentUser = PersistenceController.shared.loadLoclUserType()
+    }
 }
-
 
 
 //load messages

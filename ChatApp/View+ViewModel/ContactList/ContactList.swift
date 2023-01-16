@@ -11,7 +11,8 @@ struct ContactList: View {
     
     //MARK: - PROPERITY
     @StateObject var vm = ContacVM()
-    
+    @State var isActiveChatRoom = false
+
     var body: some View {
         ZStack {
             
@@ -40,6 +41,10 @@ struct ContactList: View {
                                 ForEach(Array(vm.contactList.enumerated()), id: \.offset) { index, contactUser in
                                     
                                     UserContactCard(userModel: contactUser)
+                                        .onTapGesture {
+                                            vm.selectedUserModel = contactUser
+                                            isActiveChatRoom.toggle()
+                                        }
                                         .onAppear {
                                             self.paginationWithCard(user: contactUser)
                                         }
@@ -61,8 +66,12 @@ struct ContactList: View {
             //MARK: - ALERT
             CustomAlert(isShowAlert: $vm.isShowAlert, alertTitle: vm.alertTitle, alertMessage:vm.alertMessage)
             
+            //MARK: - Navigation
+            NavigationLink(destination:
+                            ChatRoom(vm:ChatRoomVM(contactUser: vm.selectedUserModel ?? dummyUser2))
+                           , isActive: $isActiveChatRoom){}
             
-            //MARK: - onAppear
+            //MARK: - OnAppear
             Text("")
                 .onAppear{
                     getUserList(page: 1)

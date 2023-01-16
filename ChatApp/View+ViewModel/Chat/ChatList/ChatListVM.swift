@@ -8,19 +8,23 @@
 import Foundation
 
 class ChatListVM:BaseVM {
-    var currentUser = dummyUse1
+    
+    override init() {
+        super.init()
+        currentUser = PersistenceController.shared.loadLoclUserType()
+    }
+    
+    var currentUser: User? = nil
     @Published  var chatUserList: [ChatUser] = []
-    
-    //MARK: - PROPERITY
     @Published var searchText:String = ""
-    
     var contactUserId:String = ""
+    @Published var selectedUserModel: User? = nil
 }
 
 //load messages
 extension ChatListVM {
     func fetchData(completion: @escaping CompletionBoolHandler) {
-        FirestoreDatabaseManager.shared.getAllMessagesForConversation(q:searchText.isEmpty ? nil : searchText  , currentUserId: "\(currentUser.id ?? 0)") { result in
+        FirestoreDatabaseManager.shared.getAllMessagesForConversation(q:searchText.isEmpty ? nil : searchText  , currentUserId: "\(currentUser?.id ?? 0)") { result in
             switch result {
             case .success(let chatUserList):
                 self.chatUserList = chatUserList

@@ -103,7 +103,7 @@ struct LocationMessageView: View {
                                 VStack{
                                     CustomButton(iconName: "ic_close",btnTapCallback: {
                                         showLocationView.toggle()
-                                    },iconFillColor:whiteColor)
+                                    },iconFillColor:whiteColor,size: 18)
                                     .padding(.all,4)
                                 }
                                 .background(themeColor)

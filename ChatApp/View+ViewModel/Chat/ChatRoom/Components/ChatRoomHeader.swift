@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ChatRoomHeader: View {
     var title:String
+    var isOnline:Bool
     @Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode> 
     
     var body: some View {
@@ -24,10 +25,12 @@ struct ChatRoomHeader: View {
             HStack(spacing: 2) {
                 Text(title)
                     .font(.customFont(.RalewayBold, 17))
-                Circle()
-                    .frame(width: 8, height: 8)
-                    .foregroundColor(Color("#43a061"))
-                    .padding(.leading,10)
+                if isOnline {
+                    Circle()
+                        .frame(width: 8, height: 8)
+                        .foregroundColor(Color("#43a061"))
+                        .padding(.leading,10)
+                }
             }//:HStack
             
             Spacer()
@@ -50,7 +53,7 @@ struct ChatRoomHeader: View {
 
 struct HeaderWithBackView_Previews: PreviewProvider {
     static var previews: some View {
-        ChatRoomHeader(title:"Sanduni")
+        ChatRoomHeader(title:"Sanduni",isOnline: false)
             .previewLayout(.sizeThatFits)
     }
 }

@@ -13,7 +13,7 @@ class ContacVM:BaseVM {
     //MARK: - PROPERITY
     @Published var searchText:String = ""
     @Published var contactList:[User] = []
-    
+    @Published var selectedUserModel: User? = nil
     var currentPage =  0
     var lastPage =  0
 }

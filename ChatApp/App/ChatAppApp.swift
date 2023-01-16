@@ -37,6 +37,8 @@ struct ChatAppApp: App {
          //   ChatRoom()
            // ChatList()
        //    NewLocationPicker()
+            
+          //  ChatRoom(vm:ChatRoomVM(contactUser: dummyUser2))
         }
     }
 }

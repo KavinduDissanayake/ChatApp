@@ -9,7 +9,12 @@ import Foundation
 
 class ChatUserVM: BaseVM {
     @Published var userModel: User? = nil
-    var currentUser = dummyUse1
+    var currentUser: User? = nil
+    
+    override init() {
+        super.init()
+        currentUser = PersistenceController.shared.loadLoclUserType()
+    }
 }
 
 extension ChatUserVM {
@@ -29,7 +34,7 @@ extension ChatUserVM {
     
     func goToChatRoom(completion: @escaping (Error) -> Void) async{
         if let userModel = userModel {
-            await FirestoreDatabaseManager.shared.goToChatRoom(senderId: "\(currentUser.id ?? 0)", receiverId: "\(userModel.id ?? 0)") { error in
+            await FirestoreDatabaseManager.shared.goToChatRoom(senderId: "\(currentUser?.id ?? 0)", receiverId: "\(userModel.id ?? 0)") { error in
                 completion(error)
             }
         }else {

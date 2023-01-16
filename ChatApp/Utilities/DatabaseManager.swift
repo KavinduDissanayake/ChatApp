@@ -25,16 +25,7 @@ final class FirestoreDatabaseManager {
     var chatDataSource =  ChatDataSource()
     
 }
-// MARK: - Sending messages / conversations
-//void goToChatRoom(String currentUserID, String contactID) async {
-//  //quary
 
-//
-//  Get.to(ChatRoomScreen(contactID: contactID, currentUserID: currentUserID));
-//}
-
-
-//chat list
 extension FirestoreDatabaseManager {
     
     
@@ -93,7 +84,7 @@ extension FirestoreDatabaseManager {
                 .document(currentUserId)
                 .collection("chats")
                 .order(by: "lastTime", descending: true)
-                .whereField("connectionName", isEqualTo: q ?? "" )
+                .whereField("lastMessage", isEqualTo: q ?? "" )
                 .addSnapshotListener { (snapshot, error) in
                     guard let documents = snapshot?.documents else {
                         print("No documents")
@@ -154,6 +145,7 @@ extension FirestoreDatabaseManager {
 
 
 
+// MARK: - Sending messages / conversations
 
 //chat room
 extension FirestoreDatabaseManager {

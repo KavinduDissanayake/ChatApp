@@ -10,9 +10,7 @@ import SDWebImageSwiftUI
 
 struct ChatUserView: View {
     var chatUser:ChatUser
-    var image: String = "user"
-    var name: String = "John Doe"
-    var btnCallBack: (() -> ())
+    var btnCallBack: ((User?) -> ())
     
     //MARK: - PROPERITY
     @StateObject var vm = ChatUserVM()
@@ -114,7 +112,7 @@ struct ChatUserView: View {
                await vm.goToChatRoom { error in
                     }
             }
-            btnCallBack()
+            btnCallBack(vm.userModel)
 
         }
     }

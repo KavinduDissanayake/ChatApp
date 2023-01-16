@@ -9,9 +9,8 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct ChatRoom: View {
-    var contactUserId:String
     
-    @StateObject  var vm = ChatRoomVM()
+    @StateObject  var vm :ChatRoomVM
     
     @State private var showFilePickerAlert = false
     
@@ -31,9 +30,12 @@ struct ChatRoom: View {
         
         ZStack {
             
+            backgroundColor
+                .ignoresSafeArea(.all)
+            
             VStack{
                 
-                ChatRoomHeader(title:"Sanduni")
+                ChatRoomHeader(title:vm.contactUser.name ?? "",isOnline: vm.contactUser.isOnline ?? false)
                 
                 VStack{
                     ScrollViewReader { proxy in
@@ -48,13 +50,10 @@ struct ChatRoom: View {
                                         .foregroundColor(whiteColor)
                                         .cornerRadius(5, corners: .allCorners)
                                     
-                                    ForEach(Array(( section.messages  ).enumerated()), id: \.offset) { index, message in
+                                    ForEach(Array(( section.messages ).enumerated()), id: \.offset) { index, message in
                                         getMessage(message: message)
                                     }
                                 }
-                                
-                                
-                                
                                 HStack {
                                     Spacer()
                                     Rectangle()
@@ -67,7 +66,8 @@ struct ChatRoom: View {
                             }
                            
                         }//:VStack
-                        .padding(.bottom,70)
+                        
+                        //.padding(.bottom,70)
                         .onChange(of: vm.lastMessageId) { id in
                             withAnimation {
                                 proxy.scrollTo(bottomID, anchor: .bottom)
@@ -125,14 +125,10 @@ struct ChatRoom: View {
             
             //MARK: - Image Picker
             ImagePickerView(showSheet:$showImagePicker){ (image,url) in
-                
                 startLoading()
                 vm.uploadFile(fileUrl: url, fileType: .image){ succes in
                     stopLoading()
-                    
-                    
                 }
-                
             }
             
         
@@ -208,7 +204,7 @@ struct ChatRoom: View {
 
 struct ChatRoom_Previews: PreviewProvider {
     static var previews: some View {
-        ChatRoom(contactUserId: "1")
+        ChatRoom(vm:ChatRoomVM(contactUser: dummyUser2))
     }
 }
 

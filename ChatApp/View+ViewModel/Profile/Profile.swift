@@ -32,11 +32,10 @@ struct Profile: View {
                         .frame(width: Double.infinity,height: 259)
                     
                     VStack(spacing:5) {
-                        
+                     
                         WebImage(url: URL(string: vm.user?.avatarURL ?? "" ))
                             .placeholder(Image("Icon_placeholder"))
                             .resizable()
-                            .scaledToFill()
                             .frame(width: 100, height: 100, alignment: .center)
                             .cornerRadius(10)
                             .overlay(
