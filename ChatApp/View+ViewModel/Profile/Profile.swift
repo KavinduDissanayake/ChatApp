@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
-
-struct ProfileScreen: View {
+struct Profile: View {
     
     @State var isShowLogout = false
     
@@ -33,8 +33,10 @@ struct ProfileScreen: View {
                     
                     VStack(spacing:5) {
                         
-                        Image("user")
+                        WebImage(url: URL(string: vm.user?.avatarURL ?? "" ))
+                            .placeholder(Image("Icon_placeholder"))
                             .resizable()
+                            .scaledToFill()
                             .frame(width: 100, height: 100, alignment: .center)
                             .cornerRadius(10)
                             .overlay(
@@ -45,6 +47,7 @@ struct ProfileScreen: View {
                         Text(vm.user?.name ?? "N/A")
                             .font(.customFont(.RalewaySemiBold, 18))
                             .foregroundColor(whiteColor)
+                        
                         Text("\(vm.calculateAge(fromDOB: (vm.user?.dob ?? "N/A"))) Years Old")
                             .font(.customFont(.DMSansRegular, 14))
                             .foregroundColor(whiteColor)
@@ -70,10 +73,10 @@ struct ProfileScreen: View {
                             MenuItemView(destinationView: Text("Change Password"), title: "Change Password")
                             
                             MenuItemView(destinationView: Text("Privacy policy"), title: "Privacy policy")
+                            
                             MenuItemView(destinationView: Text("Terms and conditions"), title:"Terms and conditions")
                             
                             MenuItemView(destinationView: Text("About us"), title:"About us")
-                            
                             
                             
                             Button {
@@ -82,10 +85,7 @@ struct ProfileScreen: View {
                                 MenuItem(title: "Logout ")
                                     .foregroundColor(redColor)
                             }
-                            
-                            
-                            
-                            
+                        
                             
                             Spacer()
                             
@@ -128,7 +128,7 @@ struct ProfileScreen: View {
 
 struct ProfileScreen_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileScreen()
+        Profile()
     }
 }
 

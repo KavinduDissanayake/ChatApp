@@ -33,7 +33,7 @@ struct ChatAppApp: App {
                 .preferredColorScheme(isDarkMode ? .dark : .light)
            // ProfileScreen()
            // LocationMessageView(message:dumyMessage,isSender: false)
-
+          //  ContactList()
          //   ChatRoom()
        //    NewLocationPicker()
         }

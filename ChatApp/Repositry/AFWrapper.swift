@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Foundation
 import UIKit
 import Alamofire
 
@@ -100,24 +99,52 @@ class AFWrapper: NSObject {
     
     
     
+    func getUserListGet(q:String?,perPage:Int?,page:Int?,exceptoRles:String?, success:@escaping (UserListResponse) -> Void, failure:@escaping (Error) -> Void){
+        var headers: HTTPHeaders = [ ]
+        
+        let stringDictionary = ASP.shared.getInitialAuthParameters().mapValues { String(describing: $0) }
+        
+        for (key, value) in stringDictionary {
+            headers.add(name: key, value: value)
+        }
+        
+        
+        let parms:Parameters  = [ "q":q ?? "",
+                                  "per_page":1,
+                                  "except_roles": exceptoRles ?? "",
+                                  "page": page ?? ""]
+        
+        AF.request("\(Constant.getBaseURLV2())/users",method: .get,parameters: parms,headers: headers).responseDecodable(of: UserListResponse.self) { (response) in
+            switch response.result {
+            case .success(let userListResponse):
+                success(userListResponse)
+            case .failure(let error):
+                print(error)
+                failure(error)
+            }
+        }}
+        
     
 }
-// MARK: - UserModelResponse
-struct UserModelResponse: Codable {
+
+
+// MARK: - UserListResponse
+struct UserListResponse: Codable {
     let message: String?
-    let payload: User?
+    let payload: Payload?
+    let status: Bool?
 }
 
 // MARK: - Payload
-struct User: Codable {
-    var id: Int?
-    var name, email, twoFactorSecret, twoFactorRecoveryCodes: String?
-    var dob, gender, address, createdAt: String?
-    var updatedAt, phone, deviceToken, deviceID: String?
-    var deletedAt, lastSeen: String?
-    var isOnline: Bool?
-    var roles: String?
-    var avatarURL: String?
-    var accessToken: String?
-    
+struct Payload: Codable {
+    let currentPage: Int?
+    let data: [User]?
+    let from, lastPage, to, total: Int?
+
+    enum CodingKeys: String, CodingKey {
+        case currentPage = "current_page"
+        case data, from
+        case lastPage = "last_page"
+        case to, total
+    }
 }

@@ -41,6 +41,17 @@ struct Constant {
         }
     }
     
+    static func getBaseURLV2() -> String {
+        switch Constant.appEnvironment {
+        case .development:
+            return "https://rathnaweera.silicontools.xyz/api/v2"
+        case .staging:
+            return ""
+        case .production:
+            return "https://"
+        }
+    }
+    
 }
 
 

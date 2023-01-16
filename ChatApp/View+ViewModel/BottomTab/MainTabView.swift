@@ -26,11 +26,11 @@ struct MainTabView: View {
         case .mychat:
             ChatList()
         case .mytask:
-            HomePage()
+            ContactList()
         case .verifyed:
             HomePage()
         case .profile:
-            ProfileScreen()
+            Profile()
         }
     }
 }

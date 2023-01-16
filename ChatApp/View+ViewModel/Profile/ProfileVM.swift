@@ -16,7 +16,7 @@ class ProfileVM:BaseVM {
 extension ProfileVM {
     
 
-    //MARK: - LOGIN FUNCATION
+    //MARK: - getProfileRequest FUNCATION
     func getProfileRequest(completion: @escaping (_ status: Bool) -> ()) {
         
         // Check internet connection
