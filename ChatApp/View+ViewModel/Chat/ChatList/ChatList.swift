@@ -7,6 +7,13 @@
 
 import SwiftUI
 struct ChatList: View {
+    
+    //MARK: - PROPERITY
+    @StateObject var vm = ChatListVM()
+    
+    
+    @State var isActiveChatRoom = false
+    
     var body: some View {
         ZStack {
             
@@ -19,18 +26,9 @@ struct ChatList: View {
                 HeaderView(title: "Message")
                 
                 
-                //TODO: refactor ui-----
-                HStack {
-                    TextField("Search ..", text:.constant(""))
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(grayColor)
-                   }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 8)
-                
+                SearchTextBar(searchText: $vm.searchText) {
+                    fetchData()
+                }
                 
                 
                 
@@ -38,34 +36,19 @@ struct ChatList: View {
                     ScrollView(.vertical , showsIndicators: false) {
                         VStack(alignment: .center, spacing: 20) {
                             
-                            ChatUserView(){
+                            ForEach(Array(vm.chatUserList.enumerated()), id: \.offset) { index, chatUser in
+                                
+                                ChatUserView(chatUser:chatUser){
+                                    vm.contactUserId = chatUser.connection ?? ""
+                                    isActiveChatRoom.toggle()
+                                }
                                 
                             }
+                           
                             
-                            ChatUserView(){
-                                
-                            }
+                            Spacer()
                             
-                            ChatUserView(){
-                                
-                            }
-                            
-                            ChatUserView(){
-                                
-                            }
-                            
-                            
-                            ChatUserView(){
-                                
-                            }
-                            
-                            
-                            ChatUserView(){
-                                
-                            }
-                            ChatUserView(){
-                                
-                            }
+                           
                             
                         }//:VStack
                         .frame(minHeight: geometry.size.height)
@@ -74,9 +57,34 @@ struct ChatList: View {
                 }//:GeometryReader
             }//:VStack
             
+            
+            Text("")
+                .onAppear{
+                    fetchData()
+                }
+            
+            //MARK: - ALERT
+            CustomAlert(isShowAlert: $vm.isShowAlert, alertTitle: vm.alertTitle, alertMessage:vm.alertMessage)
+            
+            
+            
+            NavigationLink(destination:
+                            ChatRoom(contactUserId:vm.contactUserId)
+                           , isActive: $isActiveChatRoom){}
+          
+           
+
+            
         }//:ZStack
         .navigationBarHidden(true)
         .edgesIgnoringSafeArea(.all)
+    }
+    
+    
+    func fetchData(){
+        vm.fetchData{ status in 
+            
+        }
     }
 }
 
