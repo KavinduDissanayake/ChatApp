@@ -35,6 +35,7 @@ struct ChatAppApp: App {
            // LocationMessageView(message:dumyMessage,isSender: false)
           //  ContactList()
          //   ChatRoom()
+           // ChatList()
        //    NewLocationPicker()
         }
     }

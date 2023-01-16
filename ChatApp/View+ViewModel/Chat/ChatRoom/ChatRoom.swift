@@ -9,6 +9,7 @@ import SwiftUI
 import UniformTypeIdentifiers
 
 struct ChatRoom: View {
+    var contactUserId:String
     
     @StateObject  var vm = ChatRoomVM()
     
@@ -207,7 +208,7 @@ struct ChatRoom: View {
 
 struct ChatRoom_Previews: PreviewProvider {
     static var previews: some View {
-        ChatRoom()
+        ChatRoom(contactUserId: "1")
     }
 }
 

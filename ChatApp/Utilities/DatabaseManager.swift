@@ -26,8 +26,139 @@ final class FirestoreDatabaseManager {
     
 }
 // MARK: - Sending messages / conversations
+//void goToChatRoom(String currentUserID, String contactID) async {
+//  //quary
 
+//
+//  Get.to(ChatRoomScreen(contactID: contactID, currentUserID: currentUserID));
+//}
+
+
+//chat list
 extension FirestoreDatabaseManager {
+    
+    
+    public func goToChatRoom(senderId:String,receiverId :String,completion: @escaping (Error) -> Void) async {
+        
+        do {
+            let updateStatusChat = try  await database.collection("chatroom")
+                .document(getConversationID(senderId: senderId, receiverId: receiverId))
+                .collection("chats")
+                .whereField("isSeen", isEqualTo: false)
+                .whereField("idTo", isEqualTo: senderId)
+                .getDocuments()
+            
+            updateStatusChat.documents.forEach { (element) in
+                print(element.documentID)
+                
+                database.collection("chatroom")
+                    .document(getConversationID(senderId: senderId, receiverId: receiverId))
+                    .collection("chats").document(element.documentID)
+                    .updateData(["isSeen": true]) { (error) in
+                        if let error = error {
+                            print("Update failed: \(error)")
+                            completion(error)
+                        } else {
+                            print("Updated")
+                        }
+                    }
+                
+                
+            }
+            DispatchQueue.main.async {
+                self.database.collection("users").document(senderId).collection("chats")
+                    .document(self.getConversationID(senderId: senderId, receiverId: receiverId))
+                    .updateData(["total_unread": 0]) { (error) in
+                        if let error = error {
+                            print("Update failed: \(error)")
+                            completion(error)
+                        } else {
+                            print("Updated")
+                        }
+                    }
+            }
+            
+        } catch let error {
+            print("Update failed: \(error)")
+        }
+        
+    }
+    
+    ///Get all chat list
+    public func getAllMessagesForConversation(q:String? = nil ,currentUserId:String, completion: @escaping (Result<[ChatUser], Error>) -> Void){
+        let userDb = database.collection("users")
+        
+        if !(q ?? "").isEmpty {
+            userDb
+                .document(currentUserId)
+                .collection("chats")
+                .order(by: "lastTime", descending: true)
+                .whereField("connectionName", isEqualTo: q ?? "" )
+                .addSnapshotListener { (snapshot, error) in
+                    guard let documents = snapshot?.documents else {
+                        print("No documents")
+                        completion(.success([]))
+                        return
+                    }
+                    
+                    let chatUserList: [ChatUser]  =  documents.map { (queryDocumentSnapshot) -> ChatUser in
+                        let data = queryDocumentSnapshot.data()
+                        
+                        let time = data["lastTime"] as? Timestamp
+                        let date = Date(timeIntervalSince1970: TimeInterval(time?.seconds ?? 0))
+                        let lastMessage = data["lastMessage"] as? String
+                        let totalUnread = data["total_unread"] as? Int
+                        let connectionName = data["connectionName"] as? String
+                        let connection = data["connection"] as? String
+                        
+                        return ChatUser(connection: connection ?? "", connectionName:connectionName ?? "", lastMessage: lastMessage, lastTime: Int(date.toMillis()), totalUnread:totalUnread ?? 0)
+                    }
+                    
+                    completion(.success(chatUserList))
+                }
+            
+            
+            
+        }else {
+            userDb
+                .document(currentUserId)
+                .collection("chats")
+                .order(by: "lastTime", descending: true)
+            //            .whereField("connectionName", isEqualTo: q )
+                .addSnapshotListener { (snapshot, error) in
+                    guard let documents = snapshot?.documents else {
+                        print("No documents")
+                        return
+                    }
+                    
+                    let chatUserList: [ChatUser]  =  documents.map { (queryDocumentSnapshot) -> ChatUser in
+                        let data = queryDocumentSnapshot.data()
+                        
+                        let time = data["lastTime"] as? Timestamp
+                        let date = Date(timeIntervalSince1970: TimeInterval(time?.seconds ?? 0))
+                        let lastMessage = data["lastMessage"] as? String
+                        let totalUnread = data["total_unread"] as? Int
+                        let connectionName = data["connectionName"] as? String
+                        let connection = data["connection"] as? String
+                        
+                        return ChatUser(connection: connection ?? "", connectionName:connectionName ?? "", lastMessage: lastMessage, lastTime: Int(date.toMillis()), totalUnread:totalUnread ?? 0)
+                    }
+                    
+                    completion(.success(chatUserList))
+                }
+        }
+        
+    }
+    
+}
+
+
+
+
+//chat room
+extension FirestoreDatabaseManager {
+    
+    
     
     
     /// Gets all mmessages for a given conversation
@@ -248,7 +379,7 @@ extension FirestoreDatabaseManager {
                         .document(self.getConversationID(senderId: senderId, receiverId: receiverId))
                         .updateData([
                             "lastMessage": firstMessage.message,
-                            "lastTime":"",
+                            "lastTime":FieldValue.serverTimestamp(),
                             // "total_unread":totalUnread,
                             "connection": receiverId,
                             "connectionName":receiverName,
@@ -268,7 +399,7 @@ extension FirestoreDatabaseManager {
                         .setData([
                             
                             "lastMessage": firstMessage.message,
-                            "lastTime":"",
+                            "lastTime":FieldValue.serverTimestamp(),
                             "total_unread":0,
                             "connection": receiverId,
                             "connectionName":receiverName,

@@ -110,7 +110,7 @@ class AFWrapper: NSObject {
         
         
         let parms:Parameters  = [ "q":q ?? "",
-                                  "per_page":1,
+                                  "per_page":perPage ?? 0,
                                   "except_roles": exceptoRles ?? "",
                                   "page": page ?? ""]
         
@@ -125,6 +125,29 @@ class AFWrapper: NSObject {
         }}
         
     
+    
+    func showProfileGet(userId:String,success:@escaping (UserModelResponse) -> Void, failure:@escaping (Error) -> Void){
+        var headers: HTTPHeaders = [ ]
+        
+        let stringDictionary = ASP.shared.getInitialAuthParameters().mapValues { String(describing: $0) }
+        
+        for (key, value) in stringDictionary {
+            headers.add(name: key, value: value)
+        }
+        
+        
+        AF.request("\(Constant.getBaseURL())/users/\(userId)",method: .get,headers: headers)
+            .responseDecodable(of: UserModelResponse.self) { (response) in
+                switch response.result {
+                case .success(let userListResponse):
+                    success(userListResponse)
+                case .failure(let error):
+                    print(error)
+                    failure(error)
+                }
+            }
+        
+    }
 }
 
 

@@ -24,12 +24,8 @@ struct ContactList: View {
                 HeaderView(title: "Contact List")
                 
                 
-                //TODO: refactor ui-----
                
                 SearchTextBar(searchText: $vm.searchText) {
-                
-                    
-                    
                     getUserList(page: 1,isSerachOn: true)
                 }
                 

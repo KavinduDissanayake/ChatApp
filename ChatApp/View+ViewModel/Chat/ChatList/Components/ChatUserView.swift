@@ -6,27 +6,26 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ChatUserView: View {
-    
+    var chatUser:ChatUser
     var image: String = "user"
     var name: String = "John Doe"
-    var time: String = "2:13PM"
-    var bodyText: String = "Lorem ipsum dolor sit amet…"
-    var isNew: Bool = true
     var btnCallBack: (() -> ())
+    
+    //MARK: - PROPERITY
+    @StateObject var vm = ChatUserVM()
     
     
     var body: some View {
         ZStack {
-            
-         //   Color.black
-            
+                    
             RoundedRectangle(cornerRadius: 10)
                 .strokeBorder(themeColor, lineWidth: 0.5)
                 .background(
                     Group {
-                        if isNew {
+                        if (chatUser.totalUnread ?? 0) > 0  {
                               cardColor
                                 .cornerRadius(10)
                         } else {
@@ -41,8 +40,11 @@ struct ChatUserView: View {
                 )
             
             HStack(alignment: .center, spacing: 0) {
-                Image(image)
+              
+                WebImage(url: URL(string:vm.userModel?.avatarURL ?? ""))
+                    .placeholder(Image("Icon_placeholder"))
                     .resizable()
+                    .scaledToFill()
                     .frame(width: 70, height: 70, alignment: .center)
                     .cornerRadius(10)
                     .overlay(
@@ -53,59 +55,76 @@ struct ChatUserView: View {
                 
                 VStack(alignment: .leading, spacing: 0) {
                     HStack(alignment: .center, spacing: 0) {
-                        Text(name)
-                            .font(.customFont(.DMSansBold, 14))
-                            //.foregroundColor(Color.white)
+                        Text(vm.userModel?.name ?? "")
+                            .font(.customFont(.DMSansBold, 13))
                         
                         
                         Spacer()
                         
-                        Text(time)
-                            .font(.customFont(.DMSansRegular, 14))
-                           // .foregroundColor(isNew ? Color.white : Color("#848484"))
+                        Text(chatUser.getMessageTime())
+                            .font(.customFont(.DMSansRegular, 13))
                     }
-                    .padding(.bottom, 20)
-                    
-                    .padding(.bottom, 20)
-                    
+                  
                     HStack(alignment: .center, spacing: 0) {
-                        Text(bodyText)
-                            .lineLimit(1)
-                            .font(.customFont(.DMSansMedium, 14))
-                           // .foregroundColor(isNew ? Color.white : Color("#848484"))
+                        Text(chatUser.lastMessage ?? "N/A")
+                            .lineLimit(3)
+                            .font(.customFont(.DMSansRegular, 13))
                         
-                        Spacer(minLength: 24)
+                       
+                        Spacer()
                         
                         Group {
-                            if isNew {
-                                Image("dot_icon")
-                                    .resizable()
-                                    .foregroundColor(themeColor)
+                            if (chatUser.totalUnread ?? 0) > 0  {
+                                VStack {
+                                    //Spacer()
+                                    Text("\(chatUser.totalUnread ?? 0)")
+                                        .font(.customFont(.DMSansRegular, 12))
+                                        .frame(width: 14, height: 14, alignment: .center)
+                                        .padding(4)
+                                        .overlay(
+                                            Circle()
+                                                .fill(themeColor.opacity(0.2))
+                                            .padding(2)
+                                    )
+                                }
+                                   
                             }
                         }
-                        .frame(width: 10, height: 10)
                     }
+                    .frame(height: 60)
                 }
             }
             .padding(.all, 12)
             //.background(Color.red)
+            
+            Text("")
+                .onAppear{
+                    vm.getPorfile(userID: chatUser.connection ?? "") { suecss in
+                    
+                    }
+                }
+            
         }
-       // .frame(maxWidth: .infinity)
         .frame(height:96)
         .padding(.leading,16)
         .padding(.trailing,16)
+        .padding(.vertical,5)
         .onTapGesture {
-            
+           Task{
+               await vm.goToChatRoom { error in
+                    }
+            }
             btnCallBack()
+
         }
     }
 }
 
-struct ChatUserView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChatUserView(){
-            
-        }
-        .previewLayout(.sizeThatFits)
-    }
-}
+//struct ChatUserView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatUserView(){
+//
+//        }
+//        .previewLayout(.sizeThatFits)
+//    }
+//}
