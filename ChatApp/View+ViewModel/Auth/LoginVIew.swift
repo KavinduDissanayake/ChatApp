@@ -35,7 +35,7 @@ struct LoginView: View {
                                         
                                           RoundedRectangle(cornerRadius: 15, style: .continuous)
                                               .fill(cardColor)
-                                              .shadow(color: grayColor, radius: 16,y:2)
+                                              .shadow(color: grayColor, radius: 6,y:1)
 
                                         VStack(alignment:.center) {
                                               
@@ -135,9 +135,9 @@ struct LoginView: View {
     
     
     func loginRequest(){
-     //   startLoading()
+        startLoading()
         vm.loginRequest { status in
-          //  stopLoading()
+        stopLoading()
             if status {
                 ViewRouter.shared.currentRoot =  .userTabs
             }

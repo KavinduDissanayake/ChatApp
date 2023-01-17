@@ -97,7 +97,7 @@ extension PersistenceController {
     }
     
     func loadUserData() -> LocalUserData? {
-        let mainContext = PersistenceController.shared.mainContext
+        let mainContext = PersistenceController.shared.backgroundContext()
         let fetchRequest: NSFetchRequest<LocalUserData> = LocalUserData.fetchRequest()
         
         do {

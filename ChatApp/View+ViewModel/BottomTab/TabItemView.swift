@@ -16,17 +16,15 @@ struct TabItemView: View {
             Image(data.image)
                 .resizable()
                 .scaledToFit()
-                .frame(width: isSelected ? 24 : 28,
-                       height: isSelected ? 24 : 28
+                .frame(width: isSelected ? 24 : 26,
+                       height: isSelected ? 24 : 26
                 )
-               // .frame(width: <#T##CGFloat?#>)
                 .animation(.default)
-                .padding(.all ,8)
+                .padding(.all ,5)
                 .background( isSelected ? themeColor :  nil )
                 .cornerRadius(8)
                 .foregroundColor(grayColor)
-              //  .padding()
-              //  .padding( isSelected ? 10 :  0 )
+              
             
         }
     }
@@ -46,14 +44,13 @@ struct TabItemView_Previews: PreviewProvider {
 struct TabBottomView: View {
     
     let tabbarItems: [TabItemData]
-    var height: CGFloat = 70
-    var width: CGFloat = UIScreen.main.bounds.width - 32
+    var height: CGFloat = 60
+    var width: CGFloat = mainScreenWidth - 32
     @Binding var selectedIndex: Int
     
     var body: some View {
         HStack {
             Spacer()
-            
             ForEach(tabbarItems.indices) { index in
                 let item = tabbarItems[index]
                 Button {

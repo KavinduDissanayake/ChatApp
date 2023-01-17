@@ -23,7 +23,7 @@ struct RootView: View {
                     }
                 }
         }//:NavigationView
-        .navigationViewStyle(.stack)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func containedView(roots: Roots) -> AnyView {

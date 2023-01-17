@@ -196,7 +196,7 @@ struct ChatRoom: View {
         if message.idFrom == "\(vm.currentUser.id ?? 0 )"{
             return AnyView(SenderTextMessageCellView(message:message))
         }else{
-            return AnyView(ReceiveMessageCellView(message:message))
+            return AnyView(ReceiveMessageCellView(vm: ReceiveMessageCellVM(contactUser: vm.contactUser), message:message))
         }
     }
     

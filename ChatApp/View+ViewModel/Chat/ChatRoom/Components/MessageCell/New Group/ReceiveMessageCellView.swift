@@ -10,7 +10,7 @@ import SwiftUI
 struct ReceiveMessageCellView: View {
     
     
-    @StateObject  var vm = ReceiveMessageCellVM()
+    @StateObject  var vm :ReceiveMessageCellVM
     
     var message:Message
     
@@ -68,7 +68,7 @@ struct ReceiveTextMessageCellView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             chatBackgroundColor
-            ReceiveMessageCellView(message: dumyMessage)
+            ReceiveMessageCellView(vm: ReceiveMessageCellVM(contactUser: dummyUser2), message: dumyMessage)
         }
     }
 }

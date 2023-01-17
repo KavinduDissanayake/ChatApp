@@ -63,6 +63,7 @@ extension LoginViewVM {
            //save Local User
             if let userModel =  userResponse.payload  {
                 PersistenceController.shared.saveUserData(with: userModel)
+                
                 completion(true)
             }else{
                 self.alertTitle = "Failed"

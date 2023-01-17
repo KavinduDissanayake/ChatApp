@@ -10,4 +10,7 @@ import Foundation
 
 class ReceiveMessageCellVM: BaseVM {
    @Published var contactUser = dummyUser2
+    init(contactUser: User) {
+        self.contactUser = contactUser
+    }
 }

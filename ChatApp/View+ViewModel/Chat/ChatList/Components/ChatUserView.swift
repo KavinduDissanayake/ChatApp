@@ -43,7 +43,7 @@ struct ChatUserView: View {
                     .placeholder(Image("Icon_placeholder"))
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 70, height: 70, alignment: .center)
+                    .frame(width: 60, height: 60, alignment: .center)
                     .cornerRadius(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 10)
@@ -89,7 +89,7 @@ struct ChatUserView: View {
                             }
                         }
                     }
-                    .frame(height: 60)
+                   .frame(height: 45)
                 }
             }
             .padding(.all, 12)
@@ -103,7 +103,7 @@ struct ChatUserView: View {
                 }
             
         }
-        .frame(height:96)
+        .frame(height:90)
         .padding(.leading,16)
         .padding(.trailing,16)
         .padding(.vertical,5)
