@@ -89,7 +89,7 @@ struct ChatUserView: View {
                             }
                         }
                     }
-                   .frame(height: 45)
+                    .frame(height: 45)
                 }
             }
             .padding(.all, 12)

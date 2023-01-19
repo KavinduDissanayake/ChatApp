@@ -66,9 +66,7 @@ struct ChatRoom: View {
                             }
                            
                         }//:VStack
-                        
-                        //.padding(.bottom,70)
-                        .onChange(of: vm.lastMessageId) { id in
+                          .onChange(of: vm.lastMessageId) { id in
                             withAnimation {
                                 proxy.scrollTo(bottomID, anchor: .bottom)
                             }
@@ -77,6 +75,7 @@ struct ChatRoom: View {
                     }
                 }
                 .background(chatBackgroundColor)
+                .padding(.bottom,70)
                 
                
             }//:VStack

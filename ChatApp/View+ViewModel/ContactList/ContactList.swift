@@ -81,6 +81,7 @@ struct ContactList: View {
         }//:ZStack
         .navigationBarHidden(true)
         .edgesIgnoringSafeArea(.all)
+        .navigationViewStyle(StackNavigationViewStyle())
 
     }
     

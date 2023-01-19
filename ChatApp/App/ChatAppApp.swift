@@ -31,14 +31,6 @@ struct ChatAppApp: App {
             RootView()
                 .environmentObject(ViewRouter.shared)
                 .preferredColorScheme(isDarkMode ? .dark : .light)
-           // ProfileScreen()
-           // LocationMessageView(message:dumyMessage,isSender: false)
-          //  ContactList()
-         //   ChatRoom()
-           // ChatList()
-       //    NewLocationPicker()
-            
-          //  ChatRoom(vm:ChatRoomVM(contactUser: dummyUser2))
         }
     }
 }

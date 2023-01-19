@@ -176,24 +176,25 @@ extension FirestoreDatabaseManager {
                     let idFrom = data["idFrom"] as? String
                     let type = data["type"] as? String
                     let message = data["message"] as? String
+                    let isSeen = data["isSeen"] as? Bool
                     //       documents
                     let messageType = MessageTypes(rawValue: type ?? "")
                     
                     switch messageType {
                         
                     case .text:
-                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,type: messageType ?? .text, time: Int(date.toMillis()))
+                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,isSeen:isSeen ?? false, type: messageType ?? .text, time: Int(date.toMillis()))
                         
                     case .image:
                         let media =  data["media"] as? [String:AnyObject]
                         let sourceUrl = media?["source_url"] as? String
                         let mediaModel = Media(sourceURL: sourceUrl ?? "")
-                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,type: messageType ?? .text, time: Int(date.toMillis()),media: mediaModel)
+                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,isSeen:isSeen ?? false, type: messageType ?? .text, time: Int(date.toMillis()),media: mediaModel)
                     case .pdf:
                         let media =  data["media"] as? [String:AnyObject]
                         let sourceUrl = media?["source_url"] as? String
                         let mediaModel = Media(sourceURL: sourceUrl ?? "")
-                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,type: messageType ?? .text, time: Int(date.toMillis()),media: mediaModel)
+                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,isSeen:isSeen ?? false, type: messageType ?? .text, time: Int(date.toMillis()),media: mediaModel)
                         
                     case .location:
                         let location =  data["location"] as? [String:AnyObject]
@@ -201,10 +202,10 @@ extension FirestoreDatabaseManager {
                         let lon = location?["longitude"] as? String
                         let locationModel = Location(locationName: "", latitude:lat ?? "", longitude: lon ?? "" )
                         
-                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,type: messageType ?? .text, time: Int(date.toMillis()),location: locationModel)
+                        return Message(idFrom:idFrom ?? "",message: message ?? "" ,isSeen:isSeen ?? false, type: messageType ?? .text, time: Int(date.toMillis()),location: locationModel)
                         
                     case .none:
-                        return Message(idFrom:idFrom ?? "",message: "Unwon",type: messageType ?? .text, time: Int(date.toMillis()))
+                        return Message(idFrom:idFrom ?? "",message: "Unwon",isSeen:isSeen ?? false, type: messageType ?? .text, time: Int(date.toMillis()))
                         
                     }
                     

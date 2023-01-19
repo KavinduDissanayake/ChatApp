@@ -19,10 +19,10 @@ struct UserContactCard: View {
                     .placeholder(Image("Icon_placeholder"))
                     .resizable()
                     .scaledToFill()
+                    .frame(width: 35, height: 35)
                     .cornerRadius(10)
-                    .frame(width: 35, height: 35, alignment: .center)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 10)
+                        RoundedRectangle(cornerRadius: 8)
                                 .stroke(Color("#E3E3E3"), lineWidth: 2)
                      )
                 

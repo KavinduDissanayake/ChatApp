@@ -13,7 +13,7 @@ struct RootView: View {
     @State var isAnimated = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             containedView(roots: router.currentRoot)
                 .id(UUID().uuidString)
                 .transition(.slide).animation(.linear(duration: 0.2), value: isAnimated)
@@ -22,8 +22,8 @@ struct RootView: View {
                         isAnimated = true
                     }
                 }
+ 
         }//:NavigationView
-        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func containedView(roots: Roots) -> AnyView {

@@ -71,16 +71,17 @@ struct ChatList: View {
             
             
             
-            NavigationLink(destination:
-                            ChatRoom(vm:ChatRoomVM(contactUser: vm.selectedUserModel ?? dummyUser2))
-                           , isActive: $isActiveChatRoom){}
-          
-           
+            //MARK: - Navigation
+            Text("")
+                .navigationDestination(isPresented: $isActiveChatRoom) {
+                    ChatRoom(vm:ChatRoomVM(contactUser: vm.selectedUserModel ?? dummyUser2))
+                }
 
-            
+         
         }//:ZStack
         .navigationBarHidden(true)
         .edgesIgnoringSafeArea(.all)
+       
     }
     
     

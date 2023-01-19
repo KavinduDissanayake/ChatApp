@@ -16,8 +16,17 @@ struct SenderTextMessageCellView: View {
 
             VStack(alignment:.trailing) {
                 messageView(message: message, bodyType: message.type)
-                Text(message.getMessageTime())
-                    .font(.customFont(.DMSansRegular, 12))
+                HStack {
+                    
+                    Text(message.getMessageTime())
+                        .font(.customFont(.DMSansRegular, 12))
+                    
+                     Image("ic_sent")
+                        .resizable()
+                        .frame(width: 18,height: 18)
+                        .foregroundColor(message.isSeen ? themeColor :  nil)
+                       
+                }
             }
             
          }//:HStack
