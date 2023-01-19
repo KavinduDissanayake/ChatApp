@@ -84,7 +84,7 @@
 		CFC2A4AA2955774C00DE6AE9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC2A4A92955774C00DE6AE9 /* Preview Assets.xcassets */; };
 		CFC2A4AC2955774C00DE6AE9 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4AB2955774C00DE6AE9 /* Persistence.swift */; };
 		CFC2A4AF2955774C00DE6AE9 /* ChatApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4AD2955774C00DE6AE9 /* ChatApp.xcdatamodeld */; };
-		CFC2A4B629557A3A00DE6AE9 /* HomePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4B529557A3A00DE6AE9 /* HomePage.swift */; };
+		CFC2A4B629557A3A00DE6AE9 /* GroupChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4B529557A3A00DE6AE9 /* GroupChat.swift */; };
 		CFC2A4BA29557C6D00DE6AE9 /* TabItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4B929557C6D00DE6AE9 /* TabItemData.swift */; };
 		CFC2A4BC29557C8A00DE6AE9 /* TabItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4BB29557C8A00DE6AE9 /* TabItemView.swift */; };
 		CFC2A4BE29557CFA00DE6AE9 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC2A4BD29557CFA00DE6AE9 /* MainTabView.swift */; };
@@ -183,7 +183,7 @@
 		CFC2A4A92955774C00DE6AE9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CFC2A4AB2955774C00DE6AE9 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		CFC2A4AE2955774C00DE6AE9 /* ChatApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ChatApp.xcdatamodel; sourceTree = "<group>"; };
-		CFC2A4B529557A3A00DE6AE9 /* HomePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePage.swift; sourceTree = "<group>"; };
+		CFC2A4B529557A3A00DE6AE9 /* GroupChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupChat.swift; sourceTree = "<group>"; };
 		CFC2A4B929557C6D00DE6AE9 /* TabItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemData.swift; sourceTree = "<group>"; };
 		CFC2A4BB29557C8A00DE6AE9 /* TabItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemView.swift; sourceTree = "<group>"; };
 		CFC2A4BD29557CFA00DE6AE9 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
@@ -438,17 +438,17 @@
 				CF67171B29596889001C53FE /* Shared */,
 				CF07F47129581806007BDB4F /* Profile */,
 				CF635D9C2955B87900B66D53 /* Chat */,
-				CF635D9B2955B86800B66D53 /* Home */,
+				CF635D9B2955B86800B66D53 /* GroupChat */,
 			);
 			path = "View+ViewModel";
 			sourceTree = "<group>";
 		};
-		CF635D9B2955B86800B66D53 /* Home */ = {
+		CF635D9B2955B86800B66D53 /* GroupChat */ = {
 			isa = PBXGroup;
 			children = (
-				CFC2A4B529557A3A00DE6AE9 /* HomePage.swift */,
+				CFC2A4B529557A3A00DE6AE9 /* GroupChat.swift */,
 			);
-			path = Home;
+			path = GroupChat;
 			sourceTree = "<group>";
 		};
 		CF635D9C2955B87900B66D53 /* Chat */ = {
@@ -768,7 +768,7 @@
 				CF2D330B296015D700D286DE /* CustomFilePicker.swift in Sources */,
 				CFC2A4BA29557C6D00DE6AE9 /* TabItemData.swift in Sources */,
 				CFC2A4BC29557C8A00DE6AE9 /* TabItemView.swift in Sources */,
-				CFC2A4B629557A3A00DE6AE9 /* HomePage.swift in Sources */,
+				CFC2A4B629557A3A00DE6AE9 /* GroupChat.swift in Sources */,
 				CFAB41682973AF0800FB00D4 /* NewLocationPicker.swift in Sources */,
 				CF70E76C2958ABE400B70565 /* ChatRoomVM.swift in Sources */,
 				CFAB41732973FF9800FB00D4 /* UserContactCard.swift in Sources */,

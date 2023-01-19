@@ -29,7 +29,7 @@ struct MainTabView: View {
         case .mytask:
             ContactList()
         case .verifyed:
-            HomePage()
+            GroupChat()
         case .profile:
             Profile()
         }
