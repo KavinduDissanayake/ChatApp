@@ -23,7 +23,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct ChatAppApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    @AppStorage("isDarkMode") private var isDarkMode = false
+    @AppStorage("isDarkMode") var isDarkMode = false
     
     
     var body: some Scene {
@@ -31,6 +31,8 @@ struct ChatAppApp: App {
             RootView()
                 .environmentObject(ViewRouter.shared)
                 .preferredColorScheme(isDarkMode ? .dark : .light)
+            
+
         }
     }
 }

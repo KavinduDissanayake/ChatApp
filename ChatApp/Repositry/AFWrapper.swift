@@ -31,7 +31,6 @@ class AFWrapper: NSObject {
                                   "device_token":  ""]
         
         AF.request("\(Constant.getBaseURL())/login",method: .post,parameters: parms,headers: headers)
-            //.validate(statusCode: 200..<300)
             .responseDecodable(of: UserModelResponse.self) { (response) in
                 switch response.result {
                 case .success(let userModelResponse):
@@ -41,7 +40,6 @@ class AFWrapper: NSObject {
                     failure(error)
                 }
             }
-        
        
     }
     

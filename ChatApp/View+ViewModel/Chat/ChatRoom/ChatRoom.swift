@@ -14,8 +14,6 @@ struct ChatRoom: View {
     
     @State private var showFilePickerAlert = false
     
-    
-    
     @State private var showFilePicker = false
     @State private var showImagePicker = false
     @State private var showLocaionPicker = false
@@ -53,6 +51,8 @@ struct ChatRoom: View {
                                     ForEach(Array(( section.messages ).enumerated()), id: \.offset) { index, message in
                                         getMessage(message: message)
                                     }
+                                    
+                                    
                                 }
                                 HStack {
                                     Spacer()

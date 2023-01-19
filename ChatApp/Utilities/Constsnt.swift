@@ -10,6 +10,22 @@ import SwiftUI
 let mainScreenHieght = UIScreen.main.bounds.height
 let mainScreenWidth = UIScreen.main.bounds.width
 
+struct Screen {
+    
+    static func sizeFromWidth(size: CGFloat) -> CGFloat {
+        var width: CGFloat
+        width = mainScreenWidth * size / 375
+        return width
+    }
+    
+    static func sizeFromHeight(size: CGFloat) -> CGFloat {
+        var height: CGFloat
+        height = mainScreenHieght * size / 667
+        return height
+    }
+    
+}
+
 
 struct Constant {
     
@@ -49,6 +65,18 @@ struct Constant {
             return ""
         case .production:
             return "https://"
+        }
+    }
+    
+    
+    static func getAPIKey() -> Int {
+        switch Constant.appEnvironment {
+        case .development:
+            return 123456789
+        case .staging:
+            return 0
+        case .production:
+            return 0
         }
     }
     

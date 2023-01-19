@@ -12,6 +12,7 @@ struct MainTabView: View {
     @State var selectedIndex: Int = 0
     
     var body: some View {
+        
         CustomTabView(tabs: TabType.allCases.map({ $0.tabItem }), selectedIndex: $selectedIndex) { index in
             let type = TabType(rawValue: index) ?? .mychat
             getTabView(type: type)

@@ -65,17 +65,17 @@ struct Profile: View {
                     ScrollView(.vertical , showsIndicators: false) {
                         VStack(alignment: .center, spacing: 20) {
                             
-                            MenuItemView(destinationView: Text("My Profile"), title: "My Profile")
+                            MenuItemView(destinationView:CommonView(screenTitle: "My Profile"), title: "My Profile")
                             
-                            MenuItemView(destinationView: Text("Settings"), title: "Settings")
+                            MenuItemView(destinationView:SettingsView(), title: "Settings")
                             
-                            MenuItemView(destinationView: Text("Change Password"), title: "Change Password")
+                            MenuItemView(destinationView: CommonView(screenTitle: "Change Password"), title: "Change Password")
                             
-                            MenuItemView(destinationView: Text("Privacy policy"), title: "Privacy policy")
+                            MenuItemView(destinationView: CommonView(screenTitle: "Privacy policy"), title: "Privacy policy")
                             
-                            MenuItemView(destinationView: Text("Terms and conditions"), title:"Terms and conditions")
+                            MenuItemView(destinationView: CommonView(screenTitle: "Terms and conditions"), title:"Terms and conditions")
                             
-                            MenuItemView(destinationView: Text("About us"), title:"About us")
+                            MenuItemView(destinationView:CommonView(screenTitle: "About us"), title:"About us")
                             
                             
                             Button {

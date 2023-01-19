@@ -43,35 +43,25 @@ struct ImageMessageView: View {
             Text("")
                 .sheet(isPresented: $showViwer) {
             
-                    ZStack {
-                        WebImage(url: URL(string: message.media?.sourceURL ?? "" ))
-                            .placeholder(Image("Icon_placeholder"))
-                            .resizable()
-                            .frame(width: mainScreenWidth)
-                            .frame(height: mainScreenHieght)
-                            .pinchToZoom()
                             
                         VStack {
-                            
-                            HStack {
-                                VStack{
-                                    
-                                    CustomButton(iconName: "ic_close",btnTapCallback: {
-                                        showViwer.toggle()
-                                    },iconFillColor:whiteColor,size: 18)
-                                    .padding(.all,4)
-                                }
-                                .background(themeColor)
-                                .cornerRadius(5)
-                                .padding(.leading,10)
-                                .padding(.top,10)
-                              
-                                Spacer()
-                            }//:HStack
-                            
+                            HeaderWithCloseView {
+                                showViwer.toggle()
+                            }
+                        
                             Spacer()
                         }//:VStack
-                    }
+                        .background(
+                            
+                            WebImage(url: URL(string: message.media?.sourceURL ?? "" ))
+                                .placeholder(Image("Icon_placeholder"))
+                                .resizable()
+                                .frame(width: mainScreenWidth)
+                                .frame(height: mainScreenHieght)
+                                .pinchToZoom()
+                        
+                        )
+                  
             }
             
         }
@@ -79,8 +69,33 @@ struct ImageMessageView: View {
     }
 }
 
+
 struct ImageMessageView_Previews: PreviewProvider {
     static var previews: some View {
         ImageMessageView(message:dumyMessage,isSender: false)
     }
+}
+
+
+struct HeaderWithCloseView: View {
+    var callBack:()->()
+    
+    var body: some View {
+        
+        HStack {
+            
+            CustomButton(iconName: "ic_close",btnTapCallback: {
+                callBack()
+            },iconFillColor:whiteColor,size: 18)
+            .padding(.all,4)
+            .background(themeColor)
+            .cornerRadius(5)
+            .padding(.leading,10)
+            .padding(.top,10)
+          
+            Spacer()
+            
+        }//:HStack
+    }
+    
 }

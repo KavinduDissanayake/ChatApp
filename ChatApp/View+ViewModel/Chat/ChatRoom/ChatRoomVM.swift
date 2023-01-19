@@ -4,122 +4,8 @@
 //
 //  Created by Kavindu Dissanayake on 2022-12-25.
 //
-import FirebaseFirestore
 import Foundation
-import Combine
-import SwiftDate
-import FirebaseStorage
 import CoreLocation
-
-
-
-public struct MessageSection: Codable,Identifiable,Equatable {
-    
-    public static func == (lhs: MessageSection, rhs: MessageSection) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
-
-    
-    public var id = UUID()    
-    var title: String?
-    var createdAt: Int?
-    var messages: [Message] = []
-    
-    var count: Int {
-        return messages.count
-    }
-    
-    init(_ title: String, createdAt: Int) {
-        // Title
-        self.title = title
-        self.createdAt = createdAt
-    }
-    
-    subscript (index: Int) -> Message {
-        get {
-            return messages[index]
-        }
-        set {
-            messages[index] = newValue
-        }
-    }
-    
-    public func hash(into hasher: inout Hasher){
-        hasher.combine(self.title)
-    }
-}
-
-
-
-enum MessageTypes: String {
-    case text = "text"
-    case image = "image"
-    case pdf = "pdf"
-    case location = "location"
-}
-
-struct Message:Identifiable,Codable {
-    var id: String = UUID().uuidString  // @DocumentID to fetch the identifier from Firestore
-    var idFrom = ""
-    var idTo = ""
-    var message = ""
-    var isSeen = false
-    var type:MessageTypes = .text
-    var time = 0
-    var media :Media?
-    var location :Location?
-    
-    enum CodingKeys: String, CodingKey {
-        case media
-        case location
-    }
-    
-    
-    var dictionary:[String:Any]{
-       return [
-            "idFrom":idFrom,
-            "idTo":idTo,
-            "message":message,
-            "isSeen":isSeen,
-            "type":type.rawValue,
-            "time":FieldValue.serverTimestamp(),
-            "media":[
-                "source_url":media?.sourceURL
-            ],
-            "location":[
-                "latitude":location?.latitude,
-                "longitude":location?.longitude
-            ]
-        ]
-    }
-    
-    func getMessageTime() -> String{
-        let time = DateInRegion(milliseconds: time, region: .current).toFormat("hh:mm a")
-        return time
-    }
-    
-    
-}
-
-struct Media: Codable {
-    var sourceURL: String
-    enum CodingKeys: String, CodingKey {
-        case sourceURL = "source_url"
-    }
-}
-
-struct Location: Codable {
-    var locationName: String
-    var latitude: String
-    var longitude: String
-    enum CodingKeys: String, CodingKey {
-        case locationName = "locationName"
-        case latitude = "latitude"
-        case longitude = "longitude"
-    }
-}
-
 
 class ChatRoomVM: BaseVM {
     
@@ -127,7 +13,7 @@ class ChatRoomVM: BaseVM {
     
     var currentUser = dummyUse1
     var contactUser = dummyUser2
-    var firestore = Firestore.firestore()
+  
     
     @Published  var sectionsList: [MessageSection] = []
     @Published var lastMessageId: String = ""
@@ -178,10 +64,6 @@ extension ChatRoomVM {
     }
 }
 
-enum FileTypes: String {
-    case image = "image"
-    case pdf = "pdf"
-}
 //uploadFile message
 extension ChatRoomVM {
     

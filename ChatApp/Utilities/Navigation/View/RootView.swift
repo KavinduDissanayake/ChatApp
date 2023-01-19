@@ -22,7 +22,6 @@ struct RootView: View {
                         isAnimated = true
                     }
                 }
- 
         }//:NavigationView
     }
     

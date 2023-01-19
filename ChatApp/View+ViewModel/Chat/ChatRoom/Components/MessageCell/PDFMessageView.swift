@@ -71,20 +71,9 @@ struct PDFMessageView: View {
                             .edgesIgnoringSafeArea(.vertical)
                         
                         VStack {
-                            HStack {
-                                VStack{
-                                    CustomButton(iconName: "ic_close",btnTapCallback: {
-                                        showViwer.toggle()
-                                    },iconFillColor:whiteColor,size: 18)
-                                    .padding(.all,4)
-                                }
-                                .background(themeColor)
-                                .cornerRadius(5)
-                                .padding(.leading,10)
-                                .padding(.top,10)
-                              
-                                Spacer()
-                            }//:HStack
+                            HeaderWithCloseView {
+                                showViwer.toggle()
+                            }
                             
                             Spacer()
                         }//:VStack
@@ -99,6 +88,8 @@ struct PDFMessageView: View {
             showViwer.toggle()
         }
     }
+    
+  
 }
 
 struct PDFMessageView_Previews: PreviewProvider {

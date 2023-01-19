@@ -99,20 +99,9 @@ struct LocationMessageView: View {
                             .edgesIgnoringSafeArea(.vertical)
                         
                         VStack {
-                            HStack {
-                                VStack{
-                                    CustomButton(iconName: "ic_close",btnTapCallback: {
-                                        showLocationView.toggle()
-                                    },iconFillColor:whiteColor,size: 18)
-                                    .padding(.all,4)
-                                }
-                                .background(themeColor)
-                                .cornerRadius(5)
-                                .padding(.leading,10)
-                                .padding(.top,10)
-                              
-                                Spacer()
-                            }//:HStack
+                            HeaderWithCloseView {
+                                showLocationView.toggle()
+                            }
                             
                             Spacer()
                         }//:VStack
