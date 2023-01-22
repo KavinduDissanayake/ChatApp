@@ -14,7 +14,7 @@ struct ChatUserView: View {
     
     //MARK: - PROPERITY
     @StateObject var vm = ChatUserVM()
-    
+  
     
     var body: some View {
         ZStack {
@@ -97,12 +97,16 @@ struct ChatUserView: View {
             
             Text("")
                 .onAppear{
-                    vm.getPorfile(userID: chatUser.connection ?? "") { suecss in
-                    
+                    vm.isLoading = true
+                    vm.getPorfile(userID: chatUser.connection ?? "") { success in
+                        vm.isLoading = false
                     }
                 }
             
-        }
+            
+            Indicator.Continuous(isAnimating: vm.isLoading)
+            
+        }//:ZStack
         .frame(height:90)
         .padding(.leading,16)
         .padding(.trailing,16)

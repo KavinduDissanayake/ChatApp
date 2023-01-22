@@ -68,6 +68,11 @@
 		CF70E76C2958ABE400B70565 /* ChatRoomVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70E76B2958ABE400B70565 /* ChatRoomVM.swift */; };
 		CF70E76F2958AC0900B70565 /* BaseVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF70E76E2958AC0900B70565 /* BaseVM.swift */; };
 		CF73CBDC2956C49D005E5D5F /* launchscreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF73CBDB2956C49D005E5D5F /* launchscreen.storyboard */; };
+		CF986553297CF6E2004C9985 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF986552297CF6E2004C9985 /* ActivityIndicator.swift */; };
+		CF986559297CFA88004C9985 /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF986558297CFA88004C9985 /* SignUp.swift */; };
+		CF98655B297D001E004C9985 /* CheckboxField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98655A297D001E004C9985 /* CheckboxField.swift */; };
+		CF98655D297D0598004C9985 /* AuthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98655C297D0598004C9985 /* AuthHeader.swift */; };
+		CF986560297D0B89004C9985 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF98655F297D0B89004C9985 /* ForgotPassword.swift */; };
 		CFAB416329739B6C00FB00D4 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB415E29739B6B00FB00D4 /* MapView.swift */; };
 		CFAB416429739B6C00FB00D4 /* LocalizedStringKey+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB415F29739B6B00FB00D4 /* LocalizedStringKey+toString.swift */; };
 		CFAB416629739B6C00FB00D4 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAB416129739B6C00FB00D4 /* VisualEffectView.swift */; };
@@ -166,6 +171,11 @@
 		CF70E76B2958ABE400B70565 /* ChatRoomVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomVM.swift; sourceTree = "<group>"; };
 		CF70E76E2958AC0900B70565 /* BaseVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseVM.swift; sourceTree = "<group>"; };
 		CF73CBDB2956C49D005E5D5F /* launchscreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = launchscreen.storyboard; sourceTree = "<group>"; };
+		CF986552297CF6E2004C9985 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		CF986558297CFA88004C9985 /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		CF98655A297D001E004C9985 /* CheckboxField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxField.swift; sourceTree = "<group>"; };
+		CF98655C297D0598004C9985 /* AuthHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeader.swift; sourceTree = "<group>"; };
+		CF98655F297D0B89004C9985 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
 		CFAB415E29739B6B00FB00D4 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		CFAB415F29739B6B00FB00D4 /* LocalizedStringKey+toString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+toString.swift"; sourceTree = "<group>"; };
 		CFAB416129739B6C00FB00D4 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
@@ -352,9 +362,10 @@
 		CF632C1029685E48003A005D /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				CF632C1329686F09003A005D /* Components */,
-				CF632C1129686B83003A005D /* LoginVIew.swift */,
-				CF632C1C29688695003A005D /* LoginViewVM.swift */,
+				CF986561297D0D06004C9985 /* New Group */,
+				CF98655E297D0B74004C9985 /* ForgotPassword */,
+				CF986555297CFA52004C9985 /* SignUp */,
+				CF986554297CFA44004C9985 /* SignIn */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -397,6 +408,7 @@
 				CF12E11629689C22009B677C /* ApplicationServiceProvider.swift */,
 				CF12E11829689FD0009B677C /* UserDefalutManger.swift */,
 				CF5EBA3D2976CCD200B13778 /* PinchZoomView.swift */,
+				CF986552297CF6E2004C9985 /* ActivityIndicator.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -493,6 +505,7 @@
 				CF67171C29596898001C53FE /* CommonAlert.swift */,
 				CF2D330C2961E24900D286DE /* CustomAlert.swift */,
 				CF2D33142961F59C00D286DE /* ImagePickerView.swift */,
+				CF98655A297D001E004C9985 /* CheckboxField.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -504,6 +517,40 @@
 				CF67171E29596B85001C53FE /* BaseView.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		CF986554297CFA44004C9985 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				CF632C1329686F09003A005D /* Components */,
+				CF632C1129686B83003A005D /* LoginVIew.swift */,
+				CF632C1C29688695003A005D /* LoginViewVM.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		CF986555297CFA52004C9985 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				CF986558297CFA88004C9985 /* SignUp.swift */,
+				CF98655C297D0598004C9985 /* AuthHeader.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		CF98655E297D0B74004C9985 /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				CF98655F297D0B89004C9985 /* ForgotPassword.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		CF986561297D0D06004C9985 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 		CFAB415C29739B5C00FB00D4 /* LocationPicker */ = {
@@ -769,16 +816,19 @@
 				CFC2A4BA29557C6D00DE6AE9 /* TabItemData.swift in Sources */,
 				CFC2A4BC29557C8A00DE6AE9 /* TabItemView.swift in Sources */,
 				CFC2A4B629557A3A00DE6AE9 /* GroupChat.swift in Sources */,
+				CF986553297CF6E2004C9985 /* ActivityIndicator.swift in Sources */,
 				CFAB41682973AF0800FB00D4 /* NewLocationPicker.swift in Sources */,
 				CF70E76C2958ABE400B70565 /* ChatRoomVM.swift in Sources */,
 				CFAB41732973FF9800FB00D4 /* UserContactCard.swift in Sources */,
 				CF13BC5E29758E84003287D4 /* Task+Delayed.swift in Sources */,
+				CF986559297CFA88004C9985 /* SignUp.swift in Sources */,
 				CF2D330729600C5D00D286DE /* ReceiveMessageCellVM.swift in Sources */,
 				CFD093642979290500612FF9 /* SettingsView.swift in Sources */,
 				CF671716295946CC001C53FE /* Extensions.swift in Sources */,
 				CF12E11329689A59009B677C /* Reachability.swift in Sources */,
 				CFD093542979209600612FF9 /* MessageTypes.swift in Sources */,
 				CF43F9AA2963C5CF00271CA3 /* DatabaseManager.swift in Sources */,
+				CF98655B297D001E004C9985 /* CheckboxField.swift in Sources */,
 				CF13BC6529759C18003287D4 /* ChatListVM.swift in Sources */,
 				CF635D982955AFC200B66D53 /* RootView.swift in Sources */,
 				CF632C1B2968830C003A005D /* TextFiledPassword.swift in Sources */,
@@ -810,8 +860,10 @@
 				CFD0935F2979243800612FF9 /* CommonView.swift in Sources */,
 				CFAB417729744ED200FB00D4 /* User.swift in Sources */,
 				CF13BC6329759A25003287D4 /* ChatUser.swift in Sources */,
+				CF986560297D0B89004C9985 /* ForgotPassword.swift in Sources */,
 				CFD09361297924B300612FF9 /* HeaderWithBackBtn.swift in Sources */,
 				CF5EBA3E2976CCD200B13778 /* PinchZoomView.swift in Sources */,
+				CF98655D297D0598004C9985 /* AuthHeader.swift in Sources */,
 				CFAB416329739B6C00FB00D4 /* MapView.swift in Sources */,
 				CF632C1229686B83003A005D /* LoginVIew.swift in Sources */,
 				CF2D33112961ECCE00D286DE /* BottomOption.swift in Sources */,

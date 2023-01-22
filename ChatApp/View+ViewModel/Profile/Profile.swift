@@ -107,9 +107,9 @@ struct Profile: View {
             
             Text("")
                 .onAppear{
-                    startLoading()
+                    //startLoading()
                     vm.getProfileRequest { status in
-                      stopLoading()
+                    //  stopLoading()
                     }
                 }
         }//:ZStack

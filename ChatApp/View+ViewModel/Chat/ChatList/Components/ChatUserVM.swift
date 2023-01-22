@@ -10,6 +10,7 @@ import Foundation
 class ChatUserVM: BaseVM {
     @Published var userModel: User? = nil
     var currentUser: User? = nil
+    @Published var isLoading = false
     
     override init() {
         super.init()

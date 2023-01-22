@@ -18,7 +18,7 @@ enum Roots {
 
 class ViewRouter: ObservableObject {
     
-    @Published var currentRoot: Roots =  .signIn
+    @Published var currentRoot: Roots =  .signup
     
     static let shared = ViewRouter()
 

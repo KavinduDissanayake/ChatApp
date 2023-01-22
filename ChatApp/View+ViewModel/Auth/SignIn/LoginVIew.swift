@@ -11,7 +11,8 @@ struct LoginView: View {
     
     //MARK: - PROPERITY
     @StateObject var vm = LoginViewVM()
-    
+    @State var isActiveSignUp = false
+    @State var isActiveFP = false
     var body: some View {
         ZStack {
             
@@ -56,6 +57,9 @@ struct LoginView: View {
                                                 Text("Forgot Password?")
                                                     .font(.customFont(.RalewaySemiBold, 14))
                                                     .foregroundColor(themeColor)
+                                                    .onTapGesture{
+                                                        isActiveFP.toggle()
+                                                    }
                                             }
                                             .padding(.vertical,20)
                                             
@@ -110,6 +114,10 @@ struct LoginView: View {
                                           + Text("Sign Up")
                                            .font(.customFont(.RalewayBold, 14))
                                            .foregroundColor(themeColor)
+                                          
+                                   }
+                                   .onTapGesture{
+                                       isActiveSignUp.toggle()
                                    }
                                    .padding(.bottom,35)
                                    .padding(.top,20)
@@ -122,9 +130,20 @@ struct LoginView: View {
                            }//:ScrollView
                            .frame(width: geometry.size.width)
                        }//:GeometryReader
+                       
                    }//:VStack
                    
+                    
+                    Text("")
+                       .navigationDestination(isPresented: $isActiveFP) {
+                        ForgotPassword()
+                       }
+                    
             
+                    Text("")
+                       .navigationDestination(isPresented: $isActiveSignUp) {
+                         SignUp()
+                       }
             //MARK: - ALERT
             CustomAlert(isShowAlert: $vm.isShowAlert, alertTitle: vm.alertTitle, alertMessage:vm.alertMessage)
             

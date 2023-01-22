@@ -30,7 +30,7 @@ struct RootView: View {
         case .initialScreen:
             return AnyView(MainTabView())
         case .signup:
-            return AnyView(MainTabView())
+            return AnyView(SignUp())
         case .signIn:
             return AnyView(LoginView())
         case .userTabs:
