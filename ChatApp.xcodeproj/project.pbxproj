@@ -17,6 +17,7 @@
 		CF07F487295830BB007BDB4F /* ChatRoomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F486295830BB007BDB4F /* ChatRoomHeader.swift */; };
 		CF07F48929583443007BDB4F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F48829583443007BDB4F /* CustomButton.swift */; };
 		CF07F48B2958377D007BDB4F /* Constsnt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF07F48A2958377D007BDB4F /* Constsnt.swift */; };
+		CF0F29AC297F8BB3002DA553 /* promo.png in Resources */ = {isa = PBXBuildFile; fileRef = CF0F29AB297F8BB3002DA553 /* promo.png */; };
 		CF12E11329689A59009B677C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF12E11229689A59009B677C /* Reachability.swift */; };
 		CF12E11529689BB3009B677C /* AFWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF12E11429689BB3009B677C /* AFWrapper.swift */; };
 		CF12E11729689C22009B677C /* ApplicationServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF12E11629689C22009B677C /* ApplicationServiceProvider.swift */; };
@@ -116,6 +117,7 @@
 		CF07F486295830BB007BDB4F /* ChatRoomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomHeader.swift; sourceTree = "<group>"; };
 		CF07F48829583443007BDB4F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		CF07F48A2958377D007BDB4F /* Constsnt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constsnt.swift; sourceTree = "<group>"; };
+		CF0F29AB297F8BB3002DA553 /* promo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = promo.png; sourceTree = "<group>"; };
 		CF12E11229689A59009B677C /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		CF12E11429689BB3009B677C /* AFWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AFWrapper.swift; sourceTree = "<group>"; };
 		CF12E11629689C22009B677C /* ApplicationServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationServiceProvider.swift; sourceTree = "<group>"; };
@@ -587,6 +589,7 @@
 		CFC2A4962955774A00DE6AE9 = {
 			isa = PBXGroup;
 			children = (
+				CF0F29AB297F8BB3002DA553 /* promo.png */,
 				CFC2A4A12955774A00DE6AE9 /* ChatApp */,
 				CFC2A4A02955774A00DE6AE9 /* Products */,
 				23B4B02638BF2A488557F501 /* Pods */,
@@ -748,6 +751,7 @@
 				CF70E76A2958AB0C00B70565 /* GoogleService-Info.plist in Resources */,
 				CFC2A4A72955774C00DE6AE9 /* Assets.xcassets in Resources */,
 				CF07F4702958171C007BDB4F /* Raleway-Bold.ttf in Resources */,
+				CF0F29AC297F8BB3002DA553 /* promo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
