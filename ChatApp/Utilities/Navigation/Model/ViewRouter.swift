@@ -11,18 +11,24 @@ import SwiftUI
 enum Roots {
     case initialScreen
     case signup
+    case signIn
     case userTabs
 }
 
 
 class ViewRouter: ObservableObject {
     
-    @Published var currentRoot: Roots =  .initialScreen
+    @Published var currentRoot: Roots =  .signup
     
     static let shared = ViewRouter()
 
     fileprivate init() {
-        currentRoot = .userTabs
+        
+        if PersistenceController.shared.loadUserData()?.accessToken != nil {
+            currentRoot = .userTabs
+        }
+      
     }
+    
 }
 

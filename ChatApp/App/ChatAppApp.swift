@@ -6,22 +6,33 @@
 //
 
 import SwiftUI
+import FirebaseCore
+
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+    return true
+  }
+}
+
+
 
 @main
 struct ChatAppApp: App {
-//    let persistenceController = PersistenceController.shared
     
-    @AppStorage("isDarkMode") private var isDarkMode = false
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @AppStorage("isDarkMode") var isDarkMode = false
     
     
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-            MainTabView()
+            RootView()
+                .environmentObject(ViewRouter.shared)
                 .preferredColorScheme(isDarkMode ? .dark : .light)
             
-            
+
         }
     }
 }
